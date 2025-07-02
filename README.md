@@ -49,4 +49,5 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 Read more here: Setting up a custom domain
 Credits
-This project was created by Muhammad ZAKARYA.
+This project was created by Adnan Khattak.
+# addi-portfolio
