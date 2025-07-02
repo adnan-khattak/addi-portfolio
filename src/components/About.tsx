@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Code2, Coffee, Heart, Target } from "lucide-react";
+import { Code2, Coffee, Heart, Target, GraduationCap } from "lucide-react";
 
 const About = () => {
   const values = [
@@ -40,9 +40,9 @@ const About = () => {
               About <span className="bg-gradient-hero text-white ">Me</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A passionate full-stack developer with a keen eye for detail and a
-              drive for excellence. I specialize in creating seamless digital
-              experiences that blend functionality with beautiful design.
+              React Native Developer with 3 years of experience building scalable 
+              cross-platform mobile applications. Proven track record in delivering 
+              AI-integrated wellness apps, real-time features, and secure subscription-based models.
             </p>
           </div>
 
@@ -52,27 +52,30 @@ const About = () => {
             <div className="animate-slide-up">
               <div className="space-y-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  With over{" "}
+                  With{" "}
                   <span className="text-primary font-semibold">
-                    5 years of experience
+                    3 years of experience
                   </span>{" "}
-                  in software development, I've had the privilege of working on
-                  diverse projects ranging from mobile applications to
-                  enterprise-level web solutions.
+                  in React Native development, I specialize in building cross-platform 
+                  mobile applications that deliver exceptional user experiences across 
+                  iOS and Android platforms.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  My journey began with Java development, and I've since
-                  expanded into the modern JavaScript ecosystem, specializing in
-                  React Native for mobile development and Next.js for web
-                  applications.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  I believe in{" "}
+                  My expertise includes{" "}
                   <span className="text-accent font-semibold">
-                    continuous learning
+                    AI integration
                   </span>{" "}
-                  and staying current with technology trends while maintaining a
-                  strong foundation in software engineering principles.
+                  with OpenAI and ElevenLabs APIs, HealthKit integration for wellness apps, 
+                  real-time features, and secure payment implementations with Stripe.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  I have experience working remotely with international teams and 
+                  managing full app development cycles from concept to deployment. 
+                  Graduated with a{" "}
+                  <span className="text-honey font-semibold">
+                    Bachelor's in Software Engineering
+                  </span>{" "}
+                  from UET Mardan (2020-2024, CGPA: 3.08).
                 </p>
               </div>
 
@@ -113,6 +116,26 @@ const About = () => {
             </div>
           </div>
 
+          {/* Education Section */}
+          <div className="mb-16 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <h3 className="text-2xl font-bold text-foreground mb-6 text-center">Education</h3>
+            <Card className="p-8 bg-card/50 border-border/50 backdrop-blur-sm hover:shadow-elegant transition-all duration-300 max-w-2xl mx-auto">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-gradient-hero rounded-xl flex items-center justify-center shadow-glow">
+                  <GraduationCap className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-foreground">Bachelor in Software Engineering</h4>
+                  <p className="text-accent font-semibold">University of Engineering and Technology (UET) Mardan</p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center text-muted-foreground">
+                <span>2020 - 2024</span>
+                <span className="font-semibold text-primary">CGPA: 3.08</span>
+              </div>
+            </Card>
+          </div>
+
           {/* Stats */}
           <div
             className="grid grid-cols-2 md:grid-cols-4 gap-6 animate-slide-up"
@@ -120,19 +143,19 @@ const About = () => {
           >
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                5+
+                3+
               </div>
               <div className="text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-accent mb-2">
-                50+
+                15+
               </div>
               <div className="text-muted-foreground">Projects</div>
             </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-honey mb-2">
-                15+
+                12+
               </div>
               <div className="text-muted-foreground">Technologies</div>
             </div>

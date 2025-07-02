@@ -42,27 +42,26 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "muhammad.zakarya@example.com",
-      link: "mailto:muhammad.zakarya@example.com"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "adnanktk540@gmail.com",
+      link: "mailto:adnanktk540@gmail.com"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Available Worldwide",
+      value: "Islamabad, Pakistan",
+      link: null
+    },
+    {
+      icon: Phone,
+      title: "Available",
+      value: "Remote & On-site",
       link: null
     }
   ];
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-    { icon: Twitter, label: "Twitter", href: "https://twitter.com" }
+    { icon: Github, label: "GitHub", href: "https://github.com/adnanktk" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/adnan-khattak/" }
   ];
 
   return (
@@ -100,7 +99,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Muhammad Zakarya"
+                      placeholder="Adnan Khattak"
                       required
                       className="bg-background/50 border-border/50 focus:border-primary"
                     />

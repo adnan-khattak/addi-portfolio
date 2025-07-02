@@ -5,46 +5,79 @@ import { Building, Calendar, MapPin } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      company: "Tech Solutions Inc.",
-      position: "Senior Full-Stack Developer",
-      duration: "2022 - Present",
+      company: "SAASTELLAR",
+      position: "Senior React Native Engineer",
+      duration: "05/2025 - Present",
+      location: "Doha, Qatar",
+      type: "Full-time",
+      description: "Building NuviaMind AI wellness app with advanced features including meditation, HealthKit integration, multilingual support, and secure authentication systems.",
+      achievements: [
+        "Integrated OpenAI and ElevenLabs APIs for AI-powered wellness features",
+        "Implemented HealthKit integration for comprehensive health data tracking",
+        "Built multilingual support for global user accessibility",
+        "Developed secure authentication and subscription management"
+      ],
+      tech: ["React Native", "TypeScript", "OpenAI API", "ElevenLabs", "HealthKit", "Firebase"]
+    },
+    {
+      company: "TechCreator",
+      position: "React Native Developer",
+      duration: "12/2024 - 05/2025",
+      location: "Swabi, Pakistan",
+      type: "Full-time",
+      description: "Enhanced user satisfaction and feature utilization through real-time mobile features development and optimization.",
+      achievements: [
+        "Improved user engagement by implementing real-time features",
+        "Enhanced app performance and user satisfaction metrics",
+        "Collaborated with remote international teams effectively",
+        "Delivered features ahead of project timelines"
+      ],
+      tech: ["React Native", "JavaScript", "Firebase", "Real-time APIs"]
+    },
+    {
+      company: "Eonlight Solution",
+      position: "Full Stack Mobile Developer",
+      duration: "05/2024 - 12/2024",
       location: "Remote",
       type: "Full-time",
-      description: "Leading development of enterprise-level applications using React Native and Next.js. Mentoring junior developers and architecting scalable solutions.",
+      description: "Developed fire safety application with ML-based real-time fire detection capabilities and emergency push notification alerts.",
       achievements: [
-        "Increased app performance by 40% through optimization techniques",
-        "Led a team of 5 developers on multiple successful projects",
-        "Implemented CI/CD pipeline reducing deployment time by 60%"
+        "Built ML-powered real-time fire detection system",
+        "Implemented emergency push notification infrastructure",
+        "Integrated camera APIs for real-time monitoring",
+        "Optimized app performance for critical safety scenarios"
       ],
-      tech: ["React Native", "Next.js", "TypeScript", "AWS", "Docker"]
+      tech: ["React Native", "Machine Learning", "Firebase", "FCM", "Camera APIs"]
     },
     {
-      company: "Digital Innovations Ltd.",
-      position: "Mobile App Developer",
-      duration: "2020 - 2022",
-      location: "New York, NY",
+      company: "Grey Software",
+      position: "React Native Developer",
+      duration: "06/2023 - 05/2024",
+      location: "Remote",
       type: "Full-time",
-      description: "Specialized in cross-platform mobile app development with React Native. Collaborated with design teams to create intuitive user experiences.",
+      description: "Created community cleanup application with real-time reporting capabilities and two-panel task management system for efficient community engagement.",
       achievements: [
-        "Delivered 8 mobile apps with 4.8+ star ratings",
-        "Reduced development time by 30% through reusable components",
-        "Integrated complex APIs and third-party services"
+        "Developed real-time citizen reporting system",
+        "Built dual-panel task management interface",
+        "Implemented geolocation-based community features",
+        "Enhanced community engagement through intuitive UI/UX"
       ],
-      tech: ["React Native", "JavaScript", "Firebase", "GraphQL"]
+      tech: ["React Native", "TypeScript", "Google Maps", "Firebase", "Geolocation"]
     },
     {
-      company: "StartupCo",
-      position: "Junior Java Developer",
-      duration: "2019 - 2020",
-      location: "San Francisco, CA",
-      type: "Full-time",
-      description: "Developed backend services and APIs using Java and Spring Boot. Gained experience in microservices architecture and database optimization.",
+      company: "CodSoft",
+      position: "Intern",
+      duration: "04/2023",
+      location: "Remote",
+      type: "Internship",
+      description: "Built and optimized mobile application features while learning industry best practices and development workflows.",
       achievements: [
-        "Built RESTful APIs serving 10K+ daily requests",
-        "Optimized database queries improving response time by 50%",
-        "Contributed to microservices migration project"
+        "Successfully completed mobile app development projects",
+        "Learned React Native fundamentals and best practices",
+        "Contributed to feature optimization and bug fixes",
+        "Gained experience in team collaboration and version control"
       ],
-      tech: ["Java", "Spring Boot", "PostgreSQL", "Docker", "Kubernetes"]
+      tech: ["React Native", "JavaScript", "Git", "Mobile Development"]
     }
   ];
 
@@ -58,8 +91,8 @@ const Experience = () => {
               Professional <span className="bg-gradient-hero bg-clip-text text-transparent">Experience</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              My journey through various roles and technologies, building expertise in 
-              full-stack development and leading innovative projects.
+              My journey through React Native development, building expertise in 
+              mobile applications, AI integration, and real-time features across various innovative projects.
             </p>
           </div>
 

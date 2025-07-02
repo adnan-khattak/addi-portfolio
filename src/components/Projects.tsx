@@ -6,31 +6,49 @@ import { ExternalLink, Github, Smartphone, Globe, Zap } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Mobile App",
-      description: "A full-featured React Native e-commerce app with real-time inventory, secure payments, and seamless user experience.",
+      title: "Nuviamind",
+      description: "AI wellness app with OpenAI integration, ElevenLabs voice synthesis, HealthKit data integration, and comprehensive meditation features.",
       image: "/placeholder.svg",
-      tech: ["React Native", "TypeScript", "Firebase", "Stripe"],
-      type: "Mobile",
-      icon: Smartphone,
+      tech: ["React Native", "OpenAI API", "ElevenLabs", "HealthKit", "TypeScript"],
+      type: "AI Wellness",
+      icon: Zap,
       gradient: "from-primary to-primary-glow"
     },
     {
-      title: "SaaS Dashboard",
-      description: "Modern Next.js 15 dashboard with advanced analytics, real-time data visualization, and multi-tenant architecture.",
+      title: "Services App",
+      description: "Social-style service platform featuring advertisement system, in-app calling functionality, and user engagement with likes and comments.",
       image: "/placeholder.svg", 
-      tech: ["Next.js 15", "TypeScript", "MongoDB", "TailwindCSS"],
-      type: "Web",
+      tech: ["React Native", "Firebase", "FCM", "TypeScript", "Social Features"],
+      type: "Social Platform",
       icon: Globe,
       gradient: "from-accent to-accent-glow"
     },
     {
-      title: "Performance Optimizer",
-      description: "Java-based enterprise application that optimizes system performance through intelligent resource management.",
+      title: "Rideshare App",
+      description: "Real-time ride booking application with Google Maps integration, live tracking, and seamless booking experience.",
       image: "/placeholder.svg",
-      tech: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
-      type: "Backend",
-      icon: Zap,
+      tech: ["React Native", "Google Maps", "Real-time APIs", "Geolocation", "Firebase"],
+      type: "Transportation",
+      icon: Smartphone,
       gradient: "from-honey to-honey-dark"
+    },
+    {
+      title: "Fire Safety App",
+      description: "ML-powered fire detection system with real-time monitoring, emergency alerts, and automated notification system for safety management.",
+      image: "/placeholder.svg",
+      tech: ["React Native", "Machine Learning", "FCM", "Camera APIs", "Firebase"],
+      type: "Safety",
+      icon: Zap,
+      gradient: "from-red-500 to-orange-500"
+    },
+    {
+      title: "Community Cleanup App",
+      description: "Real-time citizen reporting platform with two-panel task management system for efficient community engagement and cleanup coordination.",
+      image: "/placeholder.svg",
+      tech: ["React Native", "Google Maps", "Firebase", "Real-time Features", "Geolocation"],
+      type: "Community",
+      icon: Globe,
+      gradient: "from-green-500 to-teal-500"
     }
   ];
 
@@ -44,8 +62,8 @@ const Projects = () => {
               Featured <span className="bg-gradient-hero bg-clip-text text-transparent">Projects</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Showcasing some of my recent work across mobile, web, and backend development.
-              Each project represents a unique challenge and innovative solution.
+              Showcasing my React Native projects featuring AI integration, real-time features, and innovative mobile solutions.
+              Each project demonstrates expertise in modern mobile development and emerging technologies.
             </p>
           </div>
 

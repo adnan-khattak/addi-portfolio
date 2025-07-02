@@ -8,67 +8,67 @@ import {
   Database, 
   Cloud, 
   GitBranch,
-  Palette,
+  Brain,
   Settings
 } from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend Development",
-      icon: Globe,
-      gradient: "from-primary to-primary-glow",
-      skills: [
-        { name: "React.js", level: 95 },
-        { name: "Next.js 15", level: 90 },
-        { name: "TypeScript", level: 92 },
-        { name: "JavaScript", level: 95 },
-        { name: "TailwindCSS", level: 88 }
-      ]
-    },
-    {
       title: "Mobile Development",
       icon: Smartphone,
-      gradient: "from-accent to-accent-glow",
+      gradient: "from-primary to-primary-glow",
       skills: [
         { name: "React Native", level: 95 },
-        { name: "Expo", level: 85 },
-        { name: "iOS Development", level: 75 },
-        { name: "Android Development", level: 80 },
+        { name: "TypeScript", level: 90 },
+        { name: "JavaScript", level: 92 },
+        { name: "Redux", level: 88 },
         { name: "Cross-Platform", level: 90 }
       ]
     },
     {
-      title: "Backend Development",
-      icon: Code2,
-      gradient: "from-honey to-honey-dark",
+      title: "AI & APIs",
+      icon: Brain,
+      gradient: "from-accent to-accent-glow",
       skills: [
-        { name: "Java", level: 90 },
-        { name: "Node.js", level: 85 },
-        { name: "Spring Boot", level: 88 },
-        { name: "RESTful APIs", level: 92 },
-        { name: "GraphQL", level: 80 }
+        { name: "OpenAI API", level: 85 },
+        { name: "ElevenLabs API", level: 85 },
+        { name: "HealthKit", level: 80 },
+        { name: "Google Maps API", level: 88 },
+        { name: "FCM", level: 85 }
       ]
     },
     {
-      title: "Database & Cloud",
+      title: "Backend & Cloud",
       icon: Database,
+      gradient: "from-honey to-honey-dark",
+      skills: [
+        { name: "Firebase", level: 90 },
+        { name: "Supabase", level: 85 },
+        { name: "Stripe", level: 82 },
+        { name: "Real-time APIs", level: 88 },
+        { name: "RESTful APIs", level: 90 }
+      ]
+    },
+    {
+      title: "Tools & Development",
+      icon: Code2,
       gradient: "from-primary-glow to-accent",
       skills: [
-        { name: "MongoDB", level: 85 },
-        { name: "PostgreSQL", level: 88 },
-        { name: "Firebase", level: 90 },
-        { name: "AWS", level: 82 },
-        { name: "Docker", level: 85 }
+        { name: "Git", level: 90 },
+        { name: "Agile", level: 85 },
+        { name: "Google Ads", level: 75 },
+        { name: "Material UI", level: 80 },
+        { name: "Machine Learning", level: 70 }
       ]
     }
   ];
 
   const tools = [
     { name: "Git", icon: GitBranch },
-    { name: "Docker", icon: Settings },
-    { name: "AWS", icon: Cloud },
-    { name: "Figma", icon: Palette },
+    { name: "Firebase", icon: Database },
+    { name: "Google Maps", icon: Globe },
+    { name: "OpenAI", icon: Brain },
   ];
 
   return (
@@ -81,8 +81,8 @@ const Skills = () => {
               Technical <span className="bg-gradient-hero bg-clip-text text-transparent">Skills</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A comprehensive overview of my technical expertise across frontend, backend, 
-              mobile development, and modern tools.
+              My expertise in React Native development, AI integration, real-time features, 
+              and modern mobile app technologies.
             </p>
           </div>
 
@@ -123,7 +123,7 @@ const Skills = () => {
 
           {/* Tools & Technologies */}
           <div className="text-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
-            <h3 className="text-2xl font-bold text-foreground mb-8">Tools & Technologies</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-8">Specialized Tools</h3>
             <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
               {tools.map((tool, index) => (
                 <div 
@@ -143,20 +143,20 @@ const Skills = () => {
           {/* Skills Summary */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 animate-slide-up" style={{ animationDelay: '1.2s' }}>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">15+</div>
+              <div className="text-3xl font-bold text-primary mb-2">12+</div>
               <div className="text-muted-foreground">Technologies</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">5+</div>
+              <div className="text-3xl font-bold text-accent mb-2">3+</div>
               <div className="text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-honey mb-2">50+</div>
+              <div className="text-3xl font-bold text-honey mb-2">15+</div>
               <div className="text-muted-foreground">Projects Built</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-glow mb-2">10+</div>
-              <div className="text-muted-foreground">Certifications</div>
+              <div className="text-3xl font-bold text-primary-glow mb-2">5+</div>
+              <div className="text-muted-foreground">AI Integrations</div>
             </div>
           </div>
         </div>

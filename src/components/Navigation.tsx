@@ -59,9 +59,9 @@ const Navigation = () => {
           {/* Logo/Brand */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="w-10 h-10 bg-gradient-hero rounded-lg flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
-              <span className="text-primary-foreground font-bold text-lg">MZ</span>
+              <span className="text-primary-foreground font-bold text-lg">AK</span>
             </div>
-            <span className="text-xl font-bold text-foreground">Muhammad Zakarya</span>
+            <span className="text-xl font-bold text-foreground">Adnan Khattak</span>
           </Link>
 
           {/* Desktop Navigation */}

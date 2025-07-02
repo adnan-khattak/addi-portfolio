@@ -7,10 +7,10 @@ const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
   const titles = [
     "React Native Developer",
-    "Full-Stack Engineer",
-    "Next.js 15 Specialist",
-    "TypeScript Expert",
-    "Mobile App Architect",
+    "Mobile App Developer",
+    "Cross-Platform Expert",
+    "TypeScript Developer",
+    "AI Integration Specialist",
   ];
 
   useEffect(() => {
@@ -70,9 +70,9 @@ const Hero = () => {
                 style={{ animationDelay: "0.2s" }}
               >
                 <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-                  <span className="text-primary">Muhammad</span>
+                  <span className="text-primary">Adnan</span>
                   <br />
-                  <span className="text-foreground">Zakarya</span>
+                  <span className="text-foreground">Khattak</span>
                 </h1>
                 <div className="h-20 flex items-center justify-center lg:justify-start">
                   <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground transition-all duration-500 flex items-center gap-3">
@@ -87,19 +87,19 @@ const Hero = () => {
                 className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed animate-slide-up"
                 style={{ animationDelay: "0.4s" }}
               >
-                Crafting exceptional mobile and web experiences with
+                Building scalable cross-platform mobile applications with
                 <span className="text-primary font-semibold">
                   {" "}
                   React Native
                 </span>
-                ,<span className="text-accent font-semibold"> Next.js 15</span>,
+                ,<span className="text-accent font-semibold"> AI integration</span>,
                 and
                 <span className="text-honey font-semibold">
                   {" "}
-                  modern JavaScript ecosystem
+                  real-time features
                 </span>
-                . Turning innovative ideas into scalable, high-performance
-                applications.
+                . 3 years of experience delivering innovative wellness apps and 
+                secure subscription-based models.
               </p>
 
               {/* Enhanced CTA Buttons */}
@@ -127,13 +127,13 @@ const Hero = () => {
                 style={{ animationDelay: "0.8s" }}
               >
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-primary">5+</div>
+                  <div className="text-3xl font-bold text-primary">3+</div>
                   <div className="text-sm text-muted-foreground">
                     Years Experience
                   </div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-accent">50+</div>
+                  <div className="text-3xl font-bold text-accent">15+</div>
                   <div className="text-sm text-muted-foreground">
                     Projects Completed
                   </div>
@@ -195,12 +195,12 @@ const Hero = () => {
                     <div className="w-24 h-24 mx-auto rounded-full bg-gradient-hero p-1 shadow-glow mb-6 animate-glow-pulse">
                       <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                         <span className="text-3xl font-bold text-primary">
-                          MZ
+                          AK
                         </span>
                       </div>
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-2">
-                      Muhammad Zakarya
+                      Adnan Khattak
                     </h3>
                     <p className="text-muted-foreground text-sm">
                       React Native Expert

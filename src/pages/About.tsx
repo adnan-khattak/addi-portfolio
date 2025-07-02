@@ -60,7 +60,7 @@ const About = () => {
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Hi, I'm Muhammad Zakarya – a React Native developer and digital entrepreneur with a passion for creating 
+                  Hi, I'm Adnan Khattak – a React Native developer and digital entrepreneur with a passion for creating 
                   solutions that bridge technology and real-world needs. My journey began with a fascination for mobile 
                   technology and evolved into building products that impact thousands of users.
                 </p>
@@ -93,7 +93,7 @@ const About = () => {
                     <div className="w-32 h-32 mx-auto mb-4 bg-gradient-hero rounded-full flex items-center justify-center shadow-elegant">
                       <span className="text-4xl font-bold text-primary-foreground">MZ</span>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground">Muhammad Zakarya</h3>
+                    <h3 className="text-xl font-bold text-foreground">Adnan Khattak</h3>
                     <p className="text-muted-foreground">React Native Developer & CEO</p>
                   </div>
                 </div>
