@@ -2,59 +2,136 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Code, Smartphone, Zap, Star } from "lucide-react";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { useParallax } from "@/hooks/use-scroll-animations";
 
 const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  
+  const { scrollY } = useScroll();
+  const parallaxY = useParallax(0.3);
+  const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
+  
   const titles = [
     "React Native Developer",
-    "Mobile App Developer",
+    "Mobile App Developer", 
     "Cross-Platform Expert",
     "TypeScript Developer",
     "AI Integration Specialist",
   ];
 
   useEffect(() => {
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+
     const interval = setInterval(() => {
       setCurrentTitle((prev) => (prev + 1) % titles.length);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+      clearInterval(interval);
+    };
   }, [titles.length]);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.2,
+        delayChildren: prefersReducedMotion ? 0 : 0.1,
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: prefersReducedMotion ? 0.1 : 0.8, 
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const floatingVariants = {
+    float: {
+      y: prefersReducedMotion ? 0 : [-10, 10, -10],
+      rotate: prefersReducedMotion ? 0 : [0, 180, 360],
+      transition: {
+        duration: prefersReducedMotion ? 0 : 6,
+        repeat: Infinity,
+        ease: "easeInOut" as const
+      }
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden mt-20">
-      {/* Enhanced Background with Grid Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5">
+      {/* Enhanced Background with Parallax */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"
+        style={{ y: prefersReducedMotion ? 0 : backgroundY }}
+      >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-20" />
-      </div>
+      </motion.div>
 
-      {/* Floating Elements */}
+      {/* Floating Elements with Enhanced Animation */}
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-float opacity-60"
-          style={{ animationDelay: "0s", animationDuration: "6s" }}
-        />
-        <div
-          className="absolute top-40 right-32 w-1 h-1 bg-accent rounded-full animate-float opacity-40"
-          style={{ animationDelay: "2s", animationDuration: "8s" }}
-        />
-        <div
-          className="absolute bottom-40 left-32 w-3 h-3 bg-honey rounded-full animate-float opacity-50"
-          style={{ animationDelay: "4s", animationDuration: "7s" }}
-        />
-        <div
-          className="absolute top-60 right-20 w-1.5 h-1.5 bg-primary-glow rounded-full animate-float opacity-30"
-          style={{ animationDelay: "1s", animationDuration: "9s" }}
-        />
+        {[
+          { size: "w-2 h-2", position: "top-20 left-20", color: "bg-primary", delay: 0 },
+          { size: "w-1 h-1", position: "top-40 right-32", color: "bg-accent", delay: 2 },
+          { size: "w-3 h-3", position: "bottom-40 left-32", color: "bg-honey", delay: 4 },
+          { size: "w-1.5 h-1.5", position: "top-60 right-20", color: "bg-primary-glow", delay: 1 },
+        ].map((dot, index) => (
+          <motion.div
+            key={index}
+            className={`absolute ${dot.position} ${dot.size} ${dot.color} rounded-full opacity-60`}
+            variants={floatingVariants}
+            animate="float"
+            style={{ animationDelay: `${dot.delay}s` }}
+          />
+        ))}
 
-        {/* Large Glow Effects */}
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "0s", animationDuration: "12s" }}
+        {/* Large Glow Effects with Parallax */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-primary/20 via-primary/5 to-transparent rounded-full blur-3xl"
+          style={{ y: prefersReducedMotion ? 0 : parallaxY * 0.5 }}
+          animate={prefersReducedMotion ? {} : {
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut" as const
+          }}
         />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-accent/20 via-accent/5 to-transparent rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "6s", animationDuration: "10s" }}
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-accent/20 via-accent/5 to-transparent rounded-full blur-3xl"
+          style={{ y: prefersReducedMotion ? 0 : parallaxY * -0.3 }}
+          animate={prefersReducedMotion ? {} : {
+            scale: [1, 1.05, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut" as const,
+            delay: 6
+          }}
         />
       </div>
 
@@ -63,152 +140,268 @@ const Hero = () => {
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Text Content */}
-            <div className="text-center lg:text-left">
+            <motion.div 
+              className="text-center lg:text-left"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               {/* Dynamic Title with Enhanced Typography */}
-              <div
-                className="mb-8 animate-slide-up"
-                style={{ animationDelay: "0.2s" }}
-              >
-                <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-                  <span className="text-primary">Adnan</span>
+              <motion.div className="mb-8" variants={itemVariants}>
+                <motion.h1 
+                  className="text-6xl md:text-8xl font-bold mb-6 leading-tight"
+                  whileHover={{ scale: prefersReducedMotion ? 1 : 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <motion.span 
+                    className="text-primary"
+                    whileHover={{ 
+                      textShadow: prefersReducedMotion ? "none" : "0 0 20px hsl(var(--primary-glow))" 
+                    }}
+                  >
+                    Adnan
+                  </motion.span>
                   <br />
-                  <span className="text-foreground">Khattak</span>
-                </h1>
+                  <motion.span 
+                    className="text-foreground"
+                    whileHover={{ 
+                      color: prefersReducedMotion ? undefined : "hsl(var(--accent))" 
+                    }}
+                  >
+                    Khattak
+                  </motion.span>
+                </motion.h1>
+                
                 <div className="h-20 flex items-center justify-center lg:justify-start">
-                  <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground transition-all duration-500 flex items-center gap-3">
-                    <Code className="w-8 h-8 text-primary" />
+                  <motion.h2 
+                    className="text-3xl md:text-4xl font-bold text-muted-foreground transition-all duration-500 flex items-center gap-3"
+                    key={currentTitle}
+                    initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: prefersReducedMotion ? 0 : -20 }}
+                    transition={{ duration: prefersReducedMotion ? 0.1 : 0.5 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: prefersReducedMotion ? 0 : 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Code className="w-8 h-8 text-primary" />
+                    </motion.div>
                     {titles[currentTitle]}
-                  </h2>
+                  </motion.h2>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Enhanced Description */}
-              <p
-                className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed animate-slide-up"
-                style={{ animationDelay: "0.4s" }}
+              <motion.p
+                className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed"
+                variants={itemVariants}
               >
                 Building scalable cross-platform mobile applications with
-                <span className="text-primary font-semibold">
-                  {" "}
-                  React Native
-                </span>
-                ,<span className="text-accent font-semibold"> AI integration</span>,
+                <motion.span 
+                  className="text-primary font-semibold"
+                  whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+                >
+                  {" "}React Native
+                </motion.span>
+                ,<motion.span 
+                  className="text-accent font-semibold"
+                  whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+                > AI integration</motion.span>,
                 and
-                <span className="text-honey font-semibold">
-                  {" "}
-                  real-time features
-                </span>
+                <motion.span 
+                  className="text-honey font-semibold"
+                  whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+                >
+                  {" "}real-time features
+                </motion.span>
                 . 3 years of experience delivering innovative wellness apps and 
                 secure subscription-based models.
-              </p>
+              </motion.p>
 
               {/* Enhanced CTA Buttons */}
-              <div
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12 animate-slide-up"
-                style={{ animationDelay: "0.6s" }}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
+                variants={itemVariants}
               >
-                <Button variant="hero" size="xl" className="group" asChild>
-                  <Link to="/projects">
-                    <Smartphone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                    View My Work
-                  </Link>
-                </Button>
-                <Button variant="accent" size="xl" className="group" asChild>
-                  <Link to="/contact">
-                    <Zap className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                    Let's Collaborate
-                  </Link>
-                </Button>
-              </div>
+                <motion.div
+                  whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+                  whileTap={{ scale: prefersReducedMotion ? 1 : 0.95 }}
+                >
+                  <Button variant="hero" size="xl" className="group" asChild>
+                    <Link to="/contact">
+                      <motion.div
+                        className="flex items-center"
+                        whileHover={{ x: prefersReducedMotion ? 0 : 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <Zap className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                        Let's Collaborate
+                      </motion.div>
+                    </Link>
+                  </Button>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+                  whileTap={{ scale: prefersReducedMotion ? 1 : 0.95 }}
+                >
+                  <Button variant="accent" size="xl" className="group" asChild>
+                    <Link to="/about">
+                      <motion.div
+                        className="flex items-center"
+                        whileHover={{ x: prefersReducedMotion ? 0 : 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <Smartphone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                        About Me
+                      </motion.div>
+                    </Link>
+                  </Button>
+                </motion.div>
+              </motion.div>
 
-              {/* Stats Section */}
-              <div
-                className="grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0 animate-slide-up"
-                style={{ animationDelay: "0.8s" }}
+              {/* Stats Section with Hover Effects */}
+              <motion.div
+                className="grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0"
+                variants={itemVariants}
               >
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-primary">3+</div>
-                  <div className="text-sm text-muted-foreground">
-                    Years Experience
-                  </div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-accent">15+</div>
-                  <div className="text-sm text-muted-foreground">
-                    Projects Completed
-                  </div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-bold text-honey">100%</div>
-                  <div className="text-sm text-muted-foreground">
-                    Client Satisfaction
-                  </div>
-                </div>
-              </div>
+                {[
+                  { value: "3+", label: "Years Experience", color: "text-primary" },
+                  { value: "15+", label: "Projects Completed", color: "text-accent" },
+                  { value: "100%", label: "Client Satisfaction", color: "text-honey" },
+                ].map((stat, index) => (
+                  <motion.div 
+                    key={stat.label}
+                    className="text-center lg:text-left cursor-pointer"
+                    whileHover={{ 
+                      scale: prefersReducedMotion ? 1 : 1.05,
+                      y: prefersReducedMotion ? 0 : -5
+                    }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
 
-              {/* Badge */}
-              <div
-                className="flex justify-center lg:justify-start mt-8 animate-slide-up"
-                style={{ animationDelay: "1s" }}
+              {/* Badge with Animation */}
+              <motion.div
+                className="flex justify-center lg:justify-start mt-8"
+                variants={itemVariants}
               >
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium">
-                  <Star className="w-4 h-4" />
+                <motion.div 
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium cursor-pointer"
+                  whileHover={{ 
+                    scale: prefersReducedMotion ? 1 : 1.05,
+                    backgroundColor: "hsl(var(--primary) / 0.15)"
+                  }}
+                  animate={prefersReducedMotion ? {} : {
+                    boxShadow: [
+                      "0 0 0 0 hsl(var(--primary) / 0)",
+                      "0 0 0 10px hsl(var(--primary) / 0.1)",
+                      "0 0 0 0 hsl(var(--primary) / 0)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut" as const
+                  }}
+                >
+                  <motion.div
+                    animate={prefersReducedMotion ? {} : { rotate: [0, 360] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear" as const
+                    }}
+                  >
+                    <Star className="w-4 h-4" />
+                  </motion.div>
                   Available for Hire
-                </div>
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
-            {/* Right Column - Visual Elements */}
-            <div
-              className="relative flex items-center justify-center animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
+            {/* Right Column - Enhanced Visual Elements */}
+            <motion.div
+              className="relative flex items-center justify-center"
+              variants={itemVariants}
             >
-              {/* Main Profile Card */}
-              <div className="relative">
-                {/* Floating Tech Icons */}
-                <div
-                  className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-hero rounded-2xl flex items-center justify-center shadow-glow animate-float z-10"
-                  style={{ animationDelay: "0s" }}
+              {/* Floating Tech Icons with Enhanced Animation */}
+              {[
+                { icon: Code, position: "-top-4 -left-4", size: "w-16 h-16", gradient: "bg-gradient-hero", delay: 0 },
+                { icon: Smartphone, position: "-top-4 -right-4", size: "w-14 h-14", gradient: "bg-gradient-to-br from-accent to-accent-glow", delay: 1 },
+                { icon: Zap, position: "-bottom-4 -left-4", size: "w-12 h-12", gradient: "bg-gradient-honey", delay: 2 },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className={`absolute ${item.position} ${item.size} ${item.gradient} rounded-2xl flex items-center justify-center shadow-glow z-10 cursor-pointer`}
+                  variants={floatingVariants}
+                  animate="float"
+                  whileHover={{ 
+                    scale: prefersReducedMotion ? 1 : 1.1,
+                    rotate: prefersReducedMotion ? 0 : 10
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Code className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <div
-                  className="absolute -top-4 -right-4 w-14 h-14 bg-gradient-to-br from-accent to-accent-glow rounded-xl flex items-center justify-center shadow-elegant animate-float z-10"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <Smartphone className="w-7 h-7 text-accent-foreground" />
-                </div>
-                <div
-                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-honey rounded-lg flex items-center justify-center shadow-honey animate-float z-10"
-                  style={{ animationDelay: "2s" }}
-                >
-                  <Zap className="w-6 h-6 text-foreground" />
-                </div>
+                  <item.icon className="w-8 h-8 text-primary-foreground" />
+                </motion.div>
+              ))}
 
-                {/* Main Profile Image Container */}
-                <div className="w-80 h-80 bg-gradient-to-br from-card via-card to-primary/5 rounded-3xl border border-border/50 shadow-elegant backdrop-blur-sm flex items-center justify-center relative overflow-hidden">
-                  {/* Inner glow effect */}
-                  <div className="absolute inset-4 bg-gradient-hero rounded-2xl opacity-10 animate-glow-pulse" />
+              {/* Main Profile Image Container with Enhanced Effects */}
+              <motion.div 
+                className="w-80 h-80 bg-gradient-to-br from-card via-card to-primary/5 rounded-3xl border border-border/50 shadow-elegant backdrop-blur-sm flex items-center justify-center relative overflow-hidden cursor-pointer"
+                whileHover={{ 
+                  scale: prefersReducedMotion ? 1 : 1.02,
+                  rotateY: prefersReducedMotion ? 0 : 5,
+                  rotateX: prefersReducedMotion ? 0 : 5
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {/* Inner glow effect */}
+                <motion.div 
+                  className="absolute inset-4 bg-gradient-hero rounded-2xl opacity-10"
+                  animate={prefersReducedMotion ? {} : {
+                    opacity: [0.1, 0.2, 0.1],
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut" as const
+                  }}
+                />
 
-                  {/* Profile Content */}
-                  <div className="relative z-10 text-center">
-                    <div className="w-24 h-24 mx-auto rounded-full bg-gradient-hero p-1 shadow-glow mb-6 animate-glow-pulse">
-                      <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                        <span className="text-3xl font-bold text-primary">
-                          AK
-                        </span>
-                      </div>
+                {/* Profile Content */}
+                <div className="relative z-10 text-center">
+                  <motion.div 
+                    className="w-24 h-24 mx-auto rounded-full bg-gradient-hero p-1 shadow-glow mb-6"
+                    whileHover={{ 
+                      scale: prefersReducedMotion ? 1 : 1.1,
+                      rotate: prefersReducedMotion ? 0 : 360
+                    }}
+                    transition={{ 
+                      rotate: { duration: 0.5 },
+                      scale: { type: "spring", stiffness: 300 }
+                    }}
+                  >
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                      <span className="text-3xl font-bold text-primary">AK</span>
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">
-                      Adnan Khattak
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      React Native Expert
-                    </p>
-                  </div>
+                  </motion.div>
+                  
+                  <motion.div
+                    whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+                  >
+                    <h3 className="text-2xl font-bold text-foreground mb-2">Adnan Khattak</h3>
+                    <p className="text-muted-foreground">React Native Expert</p>
+                  </motion.div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Tech Stack Section */}

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,7 +12,6 @@ const Navigation = () => {
   const navItems = [
     { name: "Home", path: "/", isSection: false },
     { name: "About", path: "/#about", isSection: true },
-    { name: "Projects", path: "/#projects", isSection: true },
     { name: "Experience", path: "/#experience", isSection: true },
     { name: "Skills", path: "/#skills", isSection: true },
     { name: "Contact", path: "/#contact", isSection: true },
