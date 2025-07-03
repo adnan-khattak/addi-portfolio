@@ -132,7 +132,7 @@ const Skills = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Skills & Expertise</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Skills & Expertise</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A comprehensive overview of my technical skills, business acumen, and the experience behind each expertise area.
@@ -241,7 +241,7 @@ const Skills = () => {
         {/* Technology Stack Visual */}
         <div className="mt-16 animate-slide-up" style={{ animationDelay: '0.8s' }}>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Technology Stack</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Technology Stack</span>
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

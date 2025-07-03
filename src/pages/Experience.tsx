@@ -92,7 +92,7 @@ const Experience = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Experience</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Experience</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A journey through leadership roles, technical challenges, and successful project deliveries across startups and established companies.
@@ -180,7 +180,7 @@ const Experience = () => {
         {/* Testimonials */}
         <div className="animate-slide-up" style={{ animationDelay: '0.8s' }}>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Client Testimonials</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Client Testimonials</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (

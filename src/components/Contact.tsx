@@ -71,7 +71,7 @@ const Contact = () => {
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Let's <span className="bg-gradient-hero bg-clip-text text-transparent">Connect</span>
+              Let's <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Connect</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Ready to bring your ideas to life? I'm always excited to discuss new opportunities 

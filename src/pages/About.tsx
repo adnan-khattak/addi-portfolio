@@ -11,31 +11,31 @@ const About = () => {
     {
       year: "2021", 
       title: "First Major Client Success",
-      description: "Delivered a complex e-commerce mobile app for a major retailer"
+      description: "Delivered complex mobile applications for enterprise clients"
     },
     {
       year: "2022",
-      title: "Founded Al Sarih Organics",
-      description: "Launched organic food business, combining tech skills with entrepreneurship"
+      title: "Technical Leadership",
+      description: "Took on senior development roles and began leading technical teams"
     },
     {
       year: "2023",
-      title: "CTO Roles & Scaling",
-      description: "Took on leadership positions, scaling teams and products"
+      title: "Full-Stack Expansion",
+      description: "Expanded expertise to full-stack development and modern web technologies"
     },
     {
       year: "2024",
-      title: "Full-Stack Innovation",
-      description: "Expanded expertise to full-stack solutions and AI integration"
+      title: "Innovation & Growth",
+      description: "Focused on cutting-edge solutions and scaling development practices"
     }
   ];
 
   const funFacts = [
     "🚀 Built 20+ mobile apps that reached 100K+ users",
-    "🌱 Grew Al Sarih Organics to 50+ organic product lines",
-    "💻 Contributed to 5+ open source React Native libraries",
-    "📱 Passionate about UX that makes users' lives easier",
-    "🎯 Always learning the latest in tech and business strategy"
+    "💻 Experienced in React Native and full-stack development",
+    "📱 Contributed to multiple open source React Native libraries",
+    "🎯 Passionate about UX that makes users' lives easier",
+    "🌟 Always learning the latest in tech and development practices"
   ];
 
   return (
@@ -44,7 +44,7 @@ const About = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">About Me</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">About Me</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A passionate developer and entrepreneur who believes technology should solve real problems and create meaningful impact.
@@ -65,13 +65,13 @@ const About = () => {
                   technology and evolved into building products that impact thousands of users.
                 </p>
                 <p>
-                  As CEO of <span className="text-honey font-semibold">Al Sarih Organics</span>, I've learned that great 
-                  technology isn't just about clean code – it's about understanding user needs, building sustainable 
-                  businesses, and creating products that people genuinely love to use.
+                  Throughout my career, I've learned that great technology isn't just about clean code – it's about 
+                  understanding user needs, building sustainable solutions, and creating products that people genuinely 
+                  love to use. I specialize in React Native development and have experience leading technical teams.
                 </p>
                 <p>
-                  When I'm not coding or running my business, you'll find me exploring new technologies, mentoring 
-                  upcoming developers, or experimenting with innovative ways to merge tech with traditional industries.
+                  When I'm not coding, you'll find me exploring new technologies, mentoring upcoming developers, 
+                  or experimenting with innovative ways to solve complex business challenges through mobile applications.
                 </p>
                 <div className="pt-4">
                   <Button variant="honey" asChild>
@@ -91,10 +91,10 @@ const About = () => {
                 <div className="w-full h-full rounded-xl bg-card flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-32 h-32 mx-auto mb-4 bg-gradient-hero rounded-full flex items-center justify-center shadow-elegant">
-                      <span className="text-4xl font-bold text-primary-foreground">MZ</span>
+                      <span className="text-4xl font-bold text-primary-foreground">AK</span>
                     </div>
                     <h3 className="text-xl font-bold text-foreground">Adnan Khattak</h3>
-                    <p className="text-muted-foreground">React Native Developer & CEO</p>
+                    <p className="text-muted-foreground">React Native Developer & Technical Lead</p>
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@ const About = () => {
         {/* Career Timeline */}
         <div className="mb-16 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Career Journey</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Career Journey</span>
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
@@ -141,7 +141,7 @@ const About = () => {
         {/* Fun Facts */}
         <div className="animate-slide-up" style={{ animationDelay: '0.8s' }}>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Fun Facts</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Fun Facts</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {funFacts.map((fact, index) => (

@@ -71,7 +71,7 @@ const Projects = () => {
             transition={headerVariants.slideUp.transition}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Featured <span className="bg-gradient-hero bg-clip-text text-transparent">Projects</span>
+              Featured <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Projects</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Showcasing my React Native projects featuring AI integration, real-time features, and innovative mobile solutions.

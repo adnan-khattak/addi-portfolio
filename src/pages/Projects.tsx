@@ -74,7 +74,7 @@ const Projects = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">My Projects</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">My Projects</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A showcase of innovative solutions I've built, from mobile apps that scale to business platforms that drive growth.
@@ -99,7 +99,7 @@ const Projects = () => {
         {filter === "All" && (
           <div className="mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <h2 className="text-3xl font-bold text-center mb-8">
-              <span className="bg-gradient-hero bg-clip-text text-transparent">Featured Work</span>
+              <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Featured Work</span>
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {projects.filter(p => p.featured).map((project, index) => (
@@ -155,7 +155,7 @@ const Projects = () => {
         <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
           {filter !== "All" && (
             <h2 className="text-3xl font-bold text-center mb-8">
-              <span className="bg-gradient-hero bg-clip-text text-transparent">{filter}</span>
+              <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">{filter}</span>
             </h2>
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

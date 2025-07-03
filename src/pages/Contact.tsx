@@ -38,8 +38,8 @@ const Contact = () => {
     {
       title: "Email",
       description: "Detailed project discussions",
-      action: "muhammad@zakarya.dev",
-      href: "mailto:muhammad@zakarya.dev",
+      action: "adnan@khattak.dev",
+      href: "mailto:adnan@khattak.dev",
       icon: "📧",
       color: "bg-blue-500"
     },
@@ -47,7 +47,7 @@ const Contact = () => {
       title: "LinkedIn",
       description: "Professional networking",
       action: "Connect on LinkedIn",
-      href: "https://linkedin.com/in/muhammad-zakarya",
+      href: "https://linkedin.com/in/adnan-khattak",
       icon: "💼",
       color: "bg-blue-600"
     },
@@ -55,7 +55,7 @@ const Contact = () => {
       title: "Schedule Call",
       description: "Book a consultation call",
       action: "Schedule Meeting",
-      href: "https://calendly.com/muhammad-zakarya",
+      href: "https://calendly.com/adnan-khattak",
       icon: "📅",
       color: "bg-purple-500"
     }
@@ -67,7 +67,7 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Get In Touch</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Get In Touch</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your project and explore how we can work together.
