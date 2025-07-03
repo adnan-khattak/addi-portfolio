@@ -1,11 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 const Experience = () => {
   const experiences = [
     {
-      company: "SAASTELLAR",
-      position: "Senior React Native Engineer",
+      company: "Voultrex",
+      position: "Software Engineer",
       period: "05/2025 - Present",
       location: "Doha, Qatar",
       type: "Full-time",
@@ -115,78 +116,88 @@ const Experience = () => {
         </div>
 
         {/* Experience Timeline */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-4xl mx-auto mb-16 px-4 md:px-0">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-honey md:block hidden" />
-            
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-honey rounded" />
+
             {experiences.map((exp, index) => (
-              <div 
+              <div
                 key={exp.company}
                 className="relative mb-12 animate-slide-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-0 w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center shadow-glow z-10 md:block hidden">
-                  <div className="w-6 h-6 bg-primary-foreground rounded-full" />
+                <div className="absolute left-0 md:left-0 w-12 md:w-16 h-12 md:h-16 bg-gradient-hero rounded-full flex items-center justify-center shadow-glow z-10 animate-pulse">
+                  <div className="w-5 md:w-6 h-5 md:h-6 bg-primary-foreground rounded-full shadow-lg" />
                 </div>
-                
-                {/* Content Card */}
-                <Card className="md:ml-24 bg-gradient-card border-border/50 hover:shadow-elegant transition-all duration-500">
-                  <CardHeader>
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div>
-                        <CardTitle className="text-xl text-primary">{exp.position}</CardTitle>
-                        <p className="text-lg font-semibold text-foreground">{exp.company}</p>
-                      </div>
-                      <div className="flex flex-col md:items-end gap-2">
-                        <Badge variant="secondary" className="w-fit">
-                          {exp.period}
-                        </Badge>
-                        <Badge 
-                          variant="outline" 
-                          className={`w-fit ${
-                            exp.type === 'Entrepreneurship' ? 'border-honey text-honey' :
-                            exp.type === 'Leadership' ? 'border-accent text-accent' :
-                            exp.type === 'Full-time' ? 'border-primary text-primary' :
-                            'border-muted-foreground text-muted-foreground'
-                          }`}
-                        >
-                          {exp.type}
-                        </Badge>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground">{exp.location}</p>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
-                    
-                    {/* Key Achievements */}
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-3">Key Achievements:</h4>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start space-x-2 text-muted-foreground">
-                            <span className="text-accent mt-1">•</span>
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-3">Technologies Used:</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary" className="text-xs">
-                            {tech}
+
+                {/* Content Card with blurred background glow */}
+                <div className="relative">
+                  <div className="absolute -top-6 -left-6 w-40 h-40 bg-accent/20 rounded-full filter blur-3xl -z-10" />
+                  <Card className="md:ml-24 bg-gradient-card border-border/50 hover:shadow-elegant hover:scale-[1.02] transition-transform transition-shadow duration-500">
+                    <CardHeader>
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div>
+                          <CardTitle className="text-2xl text-primary tracking-wide font-semibold">
+                            {exp.position}
+                          </CardTitle>
+                          <p className="text-lg font-semibold text-foreground tracking-tight">
+                            {exp.company}
+                          </p>
+                        </div>
+                        <div className="flex flex-col md:items-end gap-2">
+                          <Badge variant="secondary" className="w-fit px-3 py-1 rounded-full">
+                            {exp.period}
                           </Badge>
-                        ))}
+                          <Badge
+                            variant="outline"
+                            className={`w-fit px-3 py-1 rounded-full ${
+                              exp.type === 'Entrepreneurship'
+                                ? 'border-honey text-honey'
+                                : exp.type === 'Leadership'
+                                ? 'border-accent text-accent'
+                                : exp.type === 'Full-time'
+                                ? 'border-primary text-primary'
+                                : 'border-muted-foreground text-muted-foreground'
+                            }`}
+                          >
+                            {exp.type}
+                          </Badge>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <p className="text-muted-foreground">{exp.location}</p>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
+
+                      {/* Key Achievements */}
+                      <div>
+                        <h4 className="font-semibold text-foreground mb-3">Key Achievements:</h4>
+                        <ul className="space-y-2">
+                          {exp.achievements.map((achievement, i) => (
+                            <li key={i} className="flex items-start space-x-2 text-muted-foreground">
+                              <CheckCircleIcon className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
+                              <span>{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Technologies */}
+                      <div>
+                        <h4 className="font-semibold text-foreground mb-3">Technologies Used:</h4>
+                        <div className="flex flex-wrap gap-3 flex-col md:flex-row">
+                          {exp.technologies.map((tech) => (
+                            <Badge key={tech} variant="secondary" className="text-xs px-3 py-1 rounded-full">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             ))}
           </div>
@@ -199,7 +210,7 @@ const Experience = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <Card 
+              <Card
                 key={testimonial.name}
                 className="bg-card/50 border-border/50 hover:shadow-elegant hover:scale-105 transition-all duration-300"
                 style={{ animationDelay: `${1 + index * 0.1}s` }}
@@ -232,15 +243,15 @@ const Experience = () => {
                 Ready to add my expertise to your team? Let's discuss how I can help drive your next project to success.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/contact" 
+                <a
+                  href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-honey text-foreground rounded-md font-medium hover:bg-honey-dark transition-colors"
                 >
                   Hire Me
                 </a>
-                <a 
-                  href="/resume.pdf" 
-                  target="_blank" 
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 bg-background/20 text-primary-foreground rounded-md font-medium hover:bg-background/30 transition-colors border border-primary-foreground/20"
                 >

@@ -268,7 +268,7 @@ const Hero = () => {
               >
                 {[
                   { value: "3+", label: "Years Experience", color: "text-primary" },
-                  { value: "15+", label: "Projects Completed", color: "text-accent" },
+                  { value: "10+", label: "Projects Completed", color: "text-accent" },
                   { value: "100%", label: "Client Satisfaction", color: "text-honey" },
                 ].map((stat, index) => (
                   <motion.div 
@@ -418,13 +418,8 @@ const Hero = () => {
                 "TypeScript",
                 "JavaScript",
                 "React.js",
-                "Next.js 15",
-                "Java",
-                "Node.js",
-                "MongoDB",
                 "Firebase",
-                "AWS",
-                "GraphQL",
+                "Supabase",
               ].map((tech, index) => (
                 <div
                   key={tech}

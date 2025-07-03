@@ -31,7 +31,7 @@ const Contact = () => {
       title: "WhatsApp",
       description: "Quick response for urgent inquiries",
       action: "Message on WhatsApp",
-      href: "https://wa.me/1234567890",
+      href: "https://wa.me/+923430229384",
       icon: "💬",
       color: "bg-green-500"
     },
@@ -47,7 +47,7 @@ const Contact = () => {
       title: "LinkedIn",
       description: "Professional networking",
       action: "Connect on LinkedIn",
-      href: "https://www.linkedin.com/in/adnan-khattak/",
+      href: "https://www.linkedin.com/in/addi54/",
       icon: "💼",
       color: "bg-blue-600"
     },

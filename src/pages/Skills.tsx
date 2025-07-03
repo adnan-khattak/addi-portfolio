@@ -189,7 +189,7 @@ const Skills = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <Card className="text-center bg-gradient-hero text-primary-foreground border-0 shadow-glow">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold">15+</div>
+              <div className="text-3xl font-bold">10+</div>
               <div className="text-sm opacity-80">Projects Completed</div>
             </CardContent>
           </Card>
@@ -201,7 +201,7 @@ const Skills = () => {
           </Card>
           <Card className="text-center bg-gradient-card border-border/50">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-honey">16+</div>
+              <div className="text-3xl font-bold text-honey">8+</div>
               <div className="text-sm text-muted-foreground">Technologies</div>
             </CardContent>
           </Card>

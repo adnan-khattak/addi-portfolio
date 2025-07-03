@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import profileImage from '../assets/addimage.jpeg';
+
 
 const About = () => {
   const milestones = [
@@ -25,7 +27,7 @@ const About = () => {
     },
     {
       year: "2025",
-      title: "Senior React Native Engineer at SAASTELLAR",
+      title: "Software Engineer at Voultrex",
       description: "Currently building NuviaMind AI wellness app with HealthKit integration in Doha, Qatar"
     }
   ];
@@ -87,7 +89,7 @@ const About = () => {
           </div>
 
           {/* Profile Image */}
-          <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          {/* <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-accent/20 to-honey/20 p-1 shadow-glow">
                 <div className="w-full h-full rounded-xl bg-card flex items-center justify-center">
@@ -101,7 +103,29 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div> */}
+
+          {/* Profile Image */}
+<div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
+  <div className="relative">
+    <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-accent/20 to-honey/20 p-1 shadow-glow">
+      <div className="w-full h-full rounded-xl bg-card flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-32 h-32 mx-auto mb-4 bg-gradient-hero rounded-full flex items-center justify-center shadow-elegant overflow-hidden">
+            <img
+              src={profileImage}
+              alt="Adnan Khattak"
+              className="w-full h-full object-cover rounded-full"
+            />
           </div>
+          <h3 className="text-xl font-bold text-foreground">Adnan Khattak</h3>
+          <p className="text-muted-foreground">React Native Developer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
 
         {/* Career Timeline */}

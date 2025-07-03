@@ -5,8 +5,8 @@ import { Building, Calendar, MapPin } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      company: "SAASTELLAR",
-      position: "Senior React Native Engineer",
+      company: "Voultrex",
+      position: "Software Engineer",
       duration: "05/2025 - Present",
       location: "Doha, Qatar",
       type: "Full-time",

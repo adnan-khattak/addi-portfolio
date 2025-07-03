@@ -261,8 +261,8 @@ const About = () => {
           >
             {[
               { value: "3+", label: "Years Experience", color: "text-primary" },
-              { value: "15+", label: "Projects", color: "text-accent" },
-              { value: "12+", label: "Technologies", color: "text-honey" },
+              { value: "10+", label: "Projects", color: "text-accent" },
+              { value: "8+", label: "Technologies", color: "text-honey" },
               { value: "100%", label: "Satisfaction", color: "text-primary-glow" }
             ].map((stat, index) => (
               <motion.div 
