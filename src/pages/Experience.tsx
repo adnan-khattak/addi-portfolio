@@ -4,84 +4,99 @@ import { Badge } from "@/components/ui/badge";
 const Experience = () => {
   const experiences = [
     {
-      company: "Al Sarih Organics",
-      position: "CEO & Founder",
-      period: "2022 - Present",
-      location: "Pakistan",
-      type: "Entrepreneurship",
-      description: "Founded and scaled organic food business from concept to 50+ product lines. Built complete digital ecosystem including e-commerce platform, inventory management, and customer analytics.",
+      company: "SAASTELLAR",
+      position: "Senior React Native Engineer",
+      period: "05/2025 - Present",
+      location: "Doha, Qatar",
+      type: "Full-time",
+      description: "Building NuviaMind AI wellness app with advanced features including meditation, HealthKit integration, multilingual support, and secure authentication systems.",
       achievements: [
-        "Grew company to $500K+ annual revenue",
-        "Established distribution network across 3 cities",
-        "Built custom ERP system using Next.js and PostgreSQL",
-        "Achieved 95% customer satisfaction rate"
+        "Integrated OpenAI and ElevenLabs APIs for personalized wellness experiences",
+        "Implemented secure authentication and subscription management with Stripe",
+        "Developed multilingual support for global user base",
+        "Built comprehensive HealthKit integration for wellness tracking"
       ],
-      technologies: ["Next.js", "PostgreSQL", "Stripe", "AWS", "Digital Marketing"]
+      technologies: ["React Native", "TypeScript", "OpenAI API", "ElevenLabs API", "HealthKit", "Firebase", "Stripe"]
     },
     {
-      company: "TechCorp Solutions",
-      position: "Senior React Native Developer",
-      period: "2021 - 2022",
+      company: "TechCreator",
+      position: "React Native Developer",
+      period: "12/2024 - 05/2025",
+      location: "Swabi, Pakistan",
+      type: "Full-time",
+      description: "Enhanced user satisfaction and feature utilization with real-time mobile features. Developed social-style service platform with advanced functionality.",
+      achievements: [
+        "Built Services App with social interactions (likes, comments)",
+        "Integrated Google Ads and voice calling capabilities",
+        "Improved user engagement through real-time features",
+        "Enhanced overall app performance and user satisfaction"
+      ],
+      technologies: ["React Native", "Firebase", "Google Ads", "WebRTC", "Redux", "FCM"]
+    },
+    {
+      company: "Eonlight Solution",
+      position: "Full Stack Mobile Developer",
+      period: "05/2024 - 12/2024",
       location: "Remote",
       type: "Full-time",
-      description: "Led development of cross-platform mobile applications serving 100K+ users. Mentored junior developers and established mobile development best practices.",
+      description: "Developed fire safety application with ML-based real-time detection and push alerts for comprehensive safety management.",
       achievements: [
-        "Delivered 3 major mobile apps on time and under budget",
-        "Reduced app crash rate by 85% through optimization",
-        "Mentored 5 junior developers",
-        "Implemented CI/CD pipeline reducing deployment time by 60%"
+        "Implemented ML-powered fire detection algorithms",
+        "Built real-time alert system with push notifications",
+        "Developed emergency response coordination features",
+        "Created comprehensive safety management dashboard"
       ],
-      technologies: ["React Native", "TypeScript", "Firebase", "Redux", "Jest"]
+      technologies: ["React Native", "Machine Learning", "FCM", "Firebase", "Camera API", "Push Notifications"]
     },
     {
-      company: "Digital Innovations Inc",
-      position: "CTO",
-      period: "2020 - 2021",
-      location: "Lahore, Pakistan",
-      type: "Leadership",
-      description: "Led technical strategy and development team for B2B SaaS platform. Responsible for architecture decisions, team management, and product roadmap.",
-      achievements: [
-        "Built and managed team of 8 developers",
-        "Architected scalable microservices infrastructure",
-        "Increased platform performance by 200%",
-        "Secured $100K seed funding"
-      ],
-      technologies: ["Node.js", "MongoDB", "Docker", "AWS", "React"]
-    },
-    {
-      company: "Freelance Consulting",
-      position: "Mobile App Developer",
-      period: "2019 - 2020",
+      company: "Grey Software",
+      position: "React Native Developer",
+      period: "06/2023 - 05/2024",
       location: "Remote",
-      type: "Freelance",
-      description: "Delivered custom mobile solutions for startups and established businesses. Specialized in React Native development and cross-platform solutions.",
+      type: "Full-time",
+      description: "Created community cleanup app with real-time reporting and two-panel task management system for efficient community coordination.",
       achievements: [
-        "Completed 15+ mobile app projects",
-        "Maintained 5-star rating on freelance platforms",
-        "Generated $80K+ in freelance revenue",
-        "Built long-term relationships with 10+ clients"
+        "Built real-time citizen reporting platform",
+        "Developed two-panel task management interface",
+        "Implemented Google Maps integration for location tracking",
+        "Created efficient community coordination workflows"
       ],
-      technologies: ["React Native", "JavaScript", "Firebase", "Expo", "REST APIs"]
+      technologies: ["React Native", "Firebase", "Google Maps", "Redux", "Real-time Database", "Image Processing"]
+    },
+    {
+      company: "CodSoft",
+      position: "Intern",
+      period: "04/2023",
+      location: "Remote",
+      type: "Internship",
+      description: "Built and optimized mobile app features during internship program, gaining hands-on experience in React Native development.",
+      achievements: [
+        "Successfully completed internship program",
+        "Built and optimized mobile app features",
+        "Learned React Native development fundamentals",
+        "Collaborated with development team on various projects"
+      ],
+      technologies: ["React Native", "JavaScript", "Firebase", "Git", "Agile Development"]
     }
   ];
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      position: "Product Manager, TechCorp",
-      content: "Muhammad's technical expertise and leadership skills are exceptional. He delivered our mobile app ahead of schedule and exceeded all performance expectations.",
+      name: "Senior Product Manager",
+      position: "International Company",
+      content: "Working with Adnan has been exceptional. His React Native expertise and attention to detail helped deliver our mobile app ahead of schedule with outstanding performance.",
       rating: 5
     },
     {
-      name: "Ahmed Hassan",
-      position: "CEO, Digital Innovations",
-      content: "As our CTO, Muhammad transformed our technical infrastructure and built an amazing team. His strategic thinking and execution are world-class.",
+      name: "Technical Lead",
+      position: "Remote Team",
+      content: "Adnan's ability to integrate complex APIs like OpenAI and HealthKit while maintaining code quality is impressive. His work on real-time features significantly improved user engagement.",
       rating: 5
     },
     {
-      name: "Lisa Chen", 
-      position: "Startup Founder",
-      content: "Muhammad built our MVP in record time and helped us secure our first round of funding. His React Native skills are top-notch.",
+      name: "Project Manager", 
+      position: "Development Team",
+      content: "The fire safety app with ML detection that Adnan built exceeded our expectations. His technical skills in React Native and problem-solving abilities are top-notch.",
       rating: 5
     }
   ];
@@ -95,7 +110,7 @@ const Experience = () => {
             <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Experience</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A journey through leadership roles, technical challenges, and successful project deliveries across startups and established companies.
+            3 years of React Native development experience across international teams, building innovative mobile applications from AI wellness apps to ML-powered safety systems.
           </p>
         </div>
 

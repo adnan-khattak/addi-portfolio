@@ -11,10 +11,11 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", path: "/", isSection: false },
-    { name: "About", path: "/#about", isSection: true },
-    { name: "Experience", path: "/#experience", isSection: true },
-    { name: "Skills", path: "/#skills", isSection: true },
-    { name: "Contact", path: "/#contact", isSection: true },
+    { name: "About", path: "/about", isSection: false },
+    { name: "Projects", path: "/projects", isSection: false },
+    { name: "Experience", path: "/experience", isSection: false },
+    { name: "Skills", path: "/skills", isSection: false },
+    { name: "Contact", path: "/contact", isSection: false },
   ];
 
   useEffect(() => {

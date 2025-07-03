@@ -4,38 +4,38 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const About = () => {
   const milestones = [
     {
-      year: "2020",
-      title: "Started React Native Journey",
-      description: "Began specializing in cross-platform mobile development"
-    },
-    {
-      year: "2021", 
-      title: "First Major Client Success",
-      description: "Delivered complex mobile applications for enterprise clients"
-    },
-    {
-      year: "2022",
-      title: "Technical Leadership",
-      description: "Took on senior development roles and began leading technical teams"
-    },
-    {
       year: "2023",
-      title: "Full-Stack Expansion",
-      description: "Expanded expertise to full-stack development and modern web technologies"
+      title: "Started Professional Journey",
+      description: "Began as an intern at CodSoft, building and optimizing mobile app features"
+    },
+    {
+      year: "2023", 
+      title: "React Native Developer at Grey Software",
+      description: "Created community cleanup app with real-time reporting and task management"
     },
     {
       year: "2024",
-      title: "Innovation & Growth",
-      description: "Focused on cutting-edge solutions and scaling development practices"
+      title: "Full Stack Mobile Developer at Eonlight",
+      description: "Developed fire safety app with ML-based real-time detection and push alerts"
+    },
+    {
+      year: "2024",
+      title: "React Native Developer at TechCreator",
+      description: "Enhanced user satisfaction with real-time mobile features in Swabi, Pakistan"
+    },
+    {
+      year: "2025",
+      title: "Senior React Native Engineer at SAASTELLAR",
+      description: "Currently building NuviaMind AI wellness app with HealthKit integration in Doha, Qatar"
     }
   ];
 
   const funFacts = [
-    "🚀 Built 20+ mobile apps that reached 100K+ users",
-    "💻 Experienced in React Native and full-stack development",
-    "📱 Contributed to multiple open source React Native libraries",
-    "🎯 Passionate about UX that makes users' lives easier",
-    "🌟 Always learning the latest in tech and development practices"
+    "🚀 3 years of React Native development experience",
+    "🤖 Built AI wellness apps with OpenAI and ElevenLabs integration",
+    "🔥 Developed ML-powered fire detection and emergency alert systems",
+    "🌍 Experienced working remotely with international teams",
+    "📱 Specialized in HealthKit integration and real-time mobile features"
   ];
 
   return (
@@ -60,18 +60,20 @@ const About = () => {
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Hi, I'm Adnan Khattak – a React Native developer and digital entrepreneur with a passion for creating 
-                  solutions that bridge technology and real-world needs. My journey began with a fascination for mobile 
-                  technology and evolved into building products that impact thousands of users.
+                  Hi, I'm Adnan Khattak – a React Native Developer with 3 years of experience building scalable 
+                  cross-platform mobile applications. I have a proven track record in delivering AI-integrated 
+                  wellness apps, real-time features, health data integrations, and secure subscription-based models.
                 </p>
                 <p>
-                  Throughout my career, I've learned that great technology isn't just about clean code – it's about 
-                  understanding user needs, building sustainable solutions, and creating products that people genuinely 
-                  love to use. I specialize in React Native development and have experience leading technical teams.
+                  I'm experienced in working remotely with international teams and managing full app cycles from 
+                  concept to deployment. My expertise spans from AI wellness applications with OpenAI integration 
+                  to fire safety apps with ML-based real-time detection, always focusing on user experience and 
+                  technical excellence.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring new technologies, mentoring upcoming developers, 
-                  or experimenting with innovative ways to solve complex business challenges through mobile applications.
+                  I graduated with a Bachelor's degree in Software Engineering from UET Mardan (2020-2024) and 
+                  am currently based in Islamabad, Pakistan, working with teams across different time zones to 
+                  deliver innovative mobile solutions.
                 </p>
                 <div className="pt-4">
                   <Button variant="honey" asChild>
@@ -94,7 +96,7 @@ const About = () => {
                       <span className="text-4xl font-bold text-primary-foreground">AK</span>
                     </div>
                     <h3 className="text-xl font-bold text-foreground">Adnan Khattak</h3>
-                    <p className="text-muted-foreground">React Native Developer & Technical Lead</p>
+                    <p className="text-muted-foreground">React Native Developer</p>
                   </div>
                 </div>
               </div>
@@ -155,6 +157,22 @@ const About = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+
+        {/* Call to Action Buttons */}
+        <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="honey" asChild>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Download Resume
+              </a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="/skills">
+                View Skills
+              </a>
+            </Button>
           </div>
         </div>
       </div>

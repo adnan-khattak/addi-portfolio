@@ -38,8 +38,8 @@ const Contact = () => {
     {
       title: "Email",
       description: "Detailed project discussions",
-      action: "adnan@khattak.dev",
-      href: "mailto:adnan@khattak.dev",
+      action: "adnanktk540@gmail.com",
+      href: "mailto:adnanktk540@gmail.com",
       icon: "📧",
       color: "bg-blue-500"
     },
@@ -47,7 +47,7 @@ const Contact = () => {
       title: "LinkedIn",
       description: "Professional networking",
       action: "Connect on LinkedIn",
-      href: "https://linkedin.com/in/adnan-khattak",
+      href: "https://www.linkedin.com/in/adnan-khattak/",
       icon: "💼",
       color: "bg-blue-600"
     },

@@ -8,12 +8,11 @@ const Skills = () => {
 
   const skillCategories = [
     "All",
-    "Frontend",
-    "Backend", 
     "Mobile",
-    "Database",
-    "DevOps",
-    "Business"
+    "Frontend", 
+    "Backend",
+    "APIs & Integrations",
+    "Tools & Workflow"
   ];
 
   const skills = [
@@ -21,97 +20,129 @@ const Skills = () => {
       name: "React Native",
       category: "Mobile",
       level: 95,
-      years: "4+ years",
+      years: "3+ years",
       description: "Expert in cross-platform mobile development, performance optimization, and native module integration.",
-      projects: 15
-    },
-    {
-      name: "JavaScript/TypeScript",
-      category: "Frontend",
-      level: 92,
-      years: "5+ years", 
-      description: "Advanced proficiency in modern JS/TS, ES6+, async programming, and type safety.",
-      projects: 25
-    },
-    {
-      name: "React.js",
-      category: "Frontend",
-      level: 88,
-      years: "4+ years",
-      description: "Extensive experience with hooks, context, state management, and modern React patterns.",
-      projects: 20
-    },
-    {
-      name: "Node.js",
-      category: "Backend",
-      level: 85,
-      years: "3+ years",
-      description: "Building scalable APIs, microservices, and real-time applications with Express.js and Fastify.",
-      projects: 18
-    },
-    {
-      name: "Next.js",
-      category: "Frontend",
-      level: 82,
-      years: "3+ years",
-      description: "Full-stack applications with SSR, API routes, and optimization for performance and SEO.",
       projects: 12
     },
     {
-      name: "MongoDB",
-      category: "Database",
-      level: 80,
-      years: "3+ years",
-      description: "Document database design, aggregation pipelines, and performance optimization.",
-      projects: 16
+      name: "TypeScript",
+      category: "Frontend",
+      level: 90,
+      years: "3+ years", 
+      description: "Advanced proficiency in type safety, modern patterns, and large-scale application development.",
+      projects: 10
     },
     {
-      name: "PostgreSQL",
-      category: "Database",
-      level: 75,
-      years: "2+ years",
-      description: "Relational database design, complex queries, and database optimization.",
+      name: "JavaScript",
+      category: "Frontend",
+      level: 88,
+      years: "3+ years",
+      description: "Extensive experience with ES6+, async programming, and modern JavaScript frameworks.",
+      projects: 15
+    },
+    {
+      name: "Redux",
+      category: "Frontend",
+      level: 85,
+      years: "3+ years",
+      description: "State management for complex applications, middleware integration, and performance optimization.",
       projects: 8
     },
     {
       name: "Firebase",
       category: "Backend",
-      level: 88,
-      years: "4+ years",
-      description: "Real-time databases, authentication, cloud functions, and push notifications.",
-      projects: 22
-    },
-    {
-      name: "AWS",
-      category: "DevOps",
-      level: 70,
-      years: "2+ years",
-      description: "Cloud deployment, EC2, S3, Lambda functions, and CI/CD pipelines.",
-      projects: 10
-    },
-    {
-      name: "Docker",
-      category: "DevOps", 
-      level: 72,
-      years: "2+ years",
-      description: "Containerization, multi-stage builds, and Docker Compose for development environments.",
-      projects: 8
-    },
-    {
-      name: "Business Strategy",
-      category: "Business",
-      level: 85,
+      level: 92,
       years: "3+ years",
-      description: "Product roadmap, market analysis, team leadership, and startup growth strategies.",
+      description: "Real-time databases, authentication, cloud functions, push notifications, and analytics.",
+      projects: 12
+    },
+    {
+      name: "Supabase",
+      category: "Backend",
+      level: 80,
+      years: "2+ years",
+      description: "Modern backend-as-a-service with PostgreSQL, real-time subscriptions, and authentication.",
       projects: 5
     },
     {
-      name: "Team Leadership",
-      category: "Business",
+      name: "Stripe",
+      category: "APIs & Integrations",
+      level: 85,
+      years: "2+ years",
+      description: "Payment processing, subscription management, and secure financial transactions.",
+      projects: 6
+    },
+    {
+      name: "HealthKit",
+      category: "APIs & Integrations",
       level: 80,
-      years: "3+ years", 
-      description: "Managing development teams, mentoring developers, and project coordination.",
-      projects: 8
+      years: "1+ years",
+      description: "iOS health data integration, wellness tracking, and privacy-compliant health apps.",
+      projects: 2
+    },
+    {
+      name: "OpenAI API",
+      category: "APIs & Integrations",
+      level: 85,
+      years: "1+ years",
+      description: "AI integration, natural language processing, and intelligent app features.",
+      projects: 3
+    },
+    {
+      name: "ElevenLabs API",
+      category: "APIs & Integrations",
+      level: 80,
+      years: "1+ years",
+      description: "Voice synthesis, text-to-speech integration, and audio content generation.",
+      projects: 2
+    },
+    {
+      name: "Google Maps API",
+      category: "APIs & Integrations",
+      level: 88,
+      years: "2+ years",
+      description: "Location services, mapping, geolocation, and navigation features.",
+      projects: 7
+    },
+    {
+      name: "FCM (Firebase Cloud Messaging)",
+      category: "Backend",
+      level: 85,
+      years: "3+ years",
+      description: "Push notifications, messaging, and real-time communication systems.",
+      projects: 10
+    },
+    {
+      name: "Google Ads",
+      category: "APIs & Integrations",
+      level: 75,
+      years: "1+ years", 
+      description: "Ad integration, monetization strategies, and advertising platform integration.",
+      projects: 3
+    },
+    {
+      name: "Git",
+      category: "Tools & Workflow",
+      level: 90,
+      years: "3+ years",
+      description: "Version control, collaborative development, branching strategies, and code review.",
+      projects: 15
+    },
+    {
+      name: "Agile Development",
+      category: "Tools & Workflow",
+      level: 82,
+      years: "3+ years",
+      description: "Scrum methodology, sprint planning, and collaborative development practices.",
+      projects: 10
+    },
+    {
+      name: "Material UI",
+      category: "Frontend",
+      level: 78,
+      years: "2+ years",
+      description: "UI component library, design systems, and consistent user interface development.",
+      projects: 6
     }
   ];
 
@@ -135,7 +166,7 @@ const Skills = () => {
             <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Skills & Expertise</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills, business acumen, and the experience behind each expertise area.
+            3 years of React Native expertise with focus on AI integrations, real-time features, and cross-platform mobile development.
           </p>
         </div>
 
@@ -158,26 +189,26 @@ const Skills = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <Card className="text-center bg-gradient-hero text-primary-foreground border-0 shadow-glow">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold">50+</div>
+              <div className="text-3xl font-bold">15+</div>
               <div className="text-sm opacity-80">Projects Completed</div>
             </CardContent>
           </Card>
           <Card className="text-center bg-gradient-card border-border/50">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-accent">5+</div>
+              <div className="text-3xl font-bold text-accent">3+</div>
               <div className="text-sm text-muted-foreground">Years Experience</div>
             </CardContent>
           </Card>
           <Card className="text-center bg-gradient-card border-border/50">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-honey">12+</div>
+              <div className="text-3xl font-bold text-honey">16+</div>
               <div className="text-sm text-muted-foreground">Technologies</div>
             </CardContent>
           </Card>
           <Card className="text-center bg-gradient-card border-border/50">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-primary">100K+</div>
-              <div className="text-sm text-muted-foreground">Users Impacted</div>
+              <div className="text-3xl font-bold text-primary">5+</div>
+              <div className="text-sm text-muted-foreground">Companies</div>
             </CardContent>
           </Card>
         </div>
@@ -245,17 +276,17 @@ const Skills = () => {
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Frontend */}
+              {/* Mobile & Frontend */}
               <Card className="bg-gradient-card border-border/50 hover:shadow-elegant transition-all duration-300">
                 <CardHeader className="text-center">
                   <div className="w-16 h-16 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-2xl">🎨</span>
+                    <span className="text-2xl">📱</span>
                   </div>
-                  <CardTitle className="text-primary">Frontend</CardTitle>
+                  <CardTitle className="text-primary">Mobile & Frontend</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {["React.js", "React Native", "Next.js", "TypeScript", "Tailwind CSS"].map((tech) => (
+                    {["React Native", "TypeScript", "JavaScript", "Redux", "Material UI"].map((tech) => (
                       <div key={tech} className="flex items-center justify-between p-2 rounded bg-background/50">
                         <span className="text-sm">{tech}</span>
                         <Badge variant="outline" className="text-xs">Expert</Badge>
@@ -265,17 +296,17 @@ const Skills = () => {
                 </CardContent>
               </Card>
 
-              {/* Backend */}
+              {/* Backend & Services */}
               <Card className="bg-gradient-card border-border/50 hover:shadow-elegant transition-all duration-300">
                 <CardHeader className="text-center">
                   <div className="w-16 h-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-4">
                     <span className="text-2xl">⚡</span>
                   </div>
-                  <CardTitle className="text-primary">Backend</CardTitle>
+                  <CardTitle className="text-primary">Backend & Services</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {["Node.js", "Express.js", "Firebase", "REST APIs", "GraphQL"].map((tech) => (
+                    {["Firebase", "Supabase", "FCM", "Stripe", "Google Maps"].map((tech) => (
                       <div key={tech} className="flex items-center justify-between p-2 rounded bg-background/50">
                         <span className="text-sm">{tech}</span>
                         <Badge variant="outline" className="text-xs">Advanced</Badge>
@@ -285,17 +316,17 @@ const Skills = () => {
                 </CardContent>
               </Card>
 
-              {/* Tools & DevOps */}
+              {/* AI & Integrations */}
               <Card className="bg-gradient-card border-border/50 hover:shadow-elegant transition-all duration-300">
                 <CardHeader className="text-center">
                   <div className="w-16 h-16 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-2xl">🛠️</span>
+                    <span className="text-2xl">🤖</span>
                   </div>
-                  <CardTitle className="text-primary">Tools & DevOps</CardTitle>
+                  <CardTitle className="text-primary">AI & Integrations</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {["Git", "Docker", "AWS", "CI/CD", "Testing"].map((tech) => (
+                    {["OpenAI API", "ElevenLabs API", "HealthKit", "Google Ads", "Git"].map((tech) => (
                       <div key={tech} className="flex items-center justify-between p-2 rounded bg-background/50">
                         <span className="text-sm">{tech}</span>
                         <Badge variant="outline" className="text-xs">Proficient</Badge>
