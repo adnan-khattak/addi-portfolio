@@ -1,11 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { useInView } from '@/lib/framer-motion';
 
 interface UseScrollAnimationsProps {
   threshold?: number;
   triggerOnce?: boolean;
   rootMargin?: string;
 }
+
+// Global reduced motion state to avoid multiple listeners
+let globalPrefersReducedMotion: boolean | null = null;
+const motionListeners = new Set<(value: boolean) => void>();
+
+const initializeMotionDetection = () => {
+  if (globalPrefersReducedMotion !== null) return;
+  
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  globalPrefersReducedMotion = mediaQuery.matches;
+  
+  const handleChange = (event: MediaQueryListEvent) => {
+    globalPrefersReducedMotion = event.matches;
+    motionListeners.forEach(listener => listener(event.matches));
+  };
+  
+  mediaQuery.addEventListener('change', handleChange);
+  
+  // Cleanup function
+  return () => {
+    mediaQuery.removeEventListener('change', handleChange);
+  };
+};
 
 export const useScrollAnimations = ({
   threshold = 0.1,
@@ -17,90 +40,95 @@ export const useScrollAnimations = ({
     once: triggerOnce,
   });
 
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    globalPrefersReducedMotion ?? false
+  );
 
   useEffect(() => {
-    // Check for reduced motion preference
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
+    initializeMotionDetection();
+    
+    if (globalPrefersReducedMotion !== null) {
+      setPrefersReducedMotion(globalPrefersReducedMotion);
+    }
+    
+    const listener = (value: boolean) => setPrefersReducedMotion(value);
+    motionListeners.add(listener);
+    
+    return () => {
+      motionListeners.delete(listener);
     };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Animation variants for different effects
-  const variants = {
-    fadeIn: {
-      initial: { opacity: 0, y: prefersReducedMotion ? 0 : 30 },
-      animate: { 
-        opacity: isInView ? 1 : 0, 
-        y: isInView ? 0 : (prefersReducedMotion ? 0 : 30) 
+  // Memoize animation variants to prevent unnecessary re-calculations
+  const variants = useMemo(() => {
+    const commonTransition = { 
+      duration: prefersReducedMotion ? 0.1 : 0.6, 
+      ease: "easeOut" as const
+    };
+
+    return {
+      fadeIn: {
+        initial: { opacity: 0, y: prefersReducedMotion ? 0 : 30 },
+        animate: { 
+          opacity: isInView ? 1 : 0, 
+          y: isInView ? 0 : (prefersReducedMotion ? 0 : 30) 
+        },
+        transition: commonTransition,
       },
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.6, 
-        ease: "easeOut" as const
+      slideUp: {
+        initial: { opacity: 0, y: prefersReducedMotion ? 0 : 50 },
+        animate: { 
+          opacity: isInView ? 1 : 0, 
+          y: isInView ? 0 : (prefersReducedMotion ? 0 : 50) 
+        },
+        transition: { 
+          duration: prefersReducedMotion ? 0.1 : 0.8, 
+          ease: "easeOut" as const
+        },
       },
-    },
-    slideUp: {
-      initial: { opacity: 0, y: prefersReducedMotion ? 0 : 50 },
-      animate: { 
-        opacity: isInView ? 1 : 0, 
-        y: isInView ? 0 : (prefersReducedMotion ? 0 : 50) 
+      slideLeft: {
+        initial: { opacity: 0, x: prefersReducedMotion ? 0 : 50 },
+        animate: { 
+          opacity: isInView ? 1 : 0, 
+          x: isInView ? 0 : (prefersReducedMotion ? 0 : 50) 
+        },
+        transition: { 
+          duration: prefersReducedMotion ? 0.1 : 0.7, 
+          ease: "easeOut" as const
+        },
       },
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.8, 
-        ease: "easeOut" as const
+      slideRight: {
+        initial: { opacity: 0, x: prefersReducedMotion ? 0 : -50 },
+        animate: { 
+          opacity: isInView ? 1 : 0, 
+          x: isInView ? 0 : (prefersReducedMotion ? 0 : -50) 
+        },
+        transition: { 
+          duration: prefersReducedMotion ? 0.1 : 0.7, 
+          ease: "easeOut" as const
+        },
       },
-    },
-    slideLeft: {
-      initial: { opacity: 0, x: prefersReducedMotion ? 0 : 50 },
-      animate: { 
-        opacity: isInView ? 1 : 0, 
-        x: isInView ? 0 : (prefersReducedMotion ? 0 : 50) 
+      scale: {
+        initial: { opacity: 0, scale: prefersReducedMotion ? 1 : 0.8 },
+        animate: { 
+          opacity: isInView ? 1 : 0, 
+          scale: isInView ? 1 : (prefersReducedMotion ? 1 : 0.8) 
+        },
+        transition: commonTransition,
       },
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.7, 
-        ease: "easeOut" as const
+      stagger: {
+        initial: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
+        animate: { 
+          opacity: isInView ? 1 : 0, 
+          y: isInView ? 0 : (prefersReducedMotion ? 0 : 20) 
+        },
+        transition: { 
+          duration: prefersReducedMotion ? 0.1 : 0.5, 
+          ease: "easeOut" as const
+        },
       },
-    },
-    slideRight: {
-      initial: { opacity: 0, x: prefersReducedMotion ? 0 : -50 },
-      animate: { 
-        opacity: isInView ? 1 : 0, 
-        x: isInView ? 0 : (prefersReducedMotion ? 0 : -50) 
-      },
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.7, 
-        ease: "easeOut" as const
-      },
-    },
-    scale: {
-      initial: { opacity: 0, scale: prefersReducedMotion ? 1 : 0.8 },
-      animate: { 
-        opacity: isInView ? 1 : 0, 
-        scale: isInView ? 1 : (prefersReducedMotion ? 1 : 0.8) 
-      },
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.6, 
-        ease: "easeOut" as const
-      },
-    },
-    stagger: {
-      initial: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
-      animate: { 
-        opacity: isInView ? 1 : 0, 
-        y: isInView ? 0 : (prefersReducedMotion ? 0 : 20) 
-      },
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.5, 
-        ease: "easeOut" as const
-      },
-    },
-  };
+    };
+  }, [isInView, prefersReducedMotion]);
 
   return {
     ref,
@@ -117,16 +145,16 @@ export const useStaggeredAnimations = (
 ) => {
   const { ref, isInView, prefersReducedMotion } = useScrollAnimations();
 
-  const containerVariants = {
+  const containerVariants = useMemo(() => ({
     animate: {
       transition: {
         staggerChildren: prefersReducedMotion ? 0 : staggerDelay,
         delayChildren: prefersReducedMotion ? 0 : 0.1,
       },
     },
-  };
+  }), [prefersReducedMotion, staggerDelay]);
 
-  const childVariants = {
+  const childVariants = useMemo(() => ({
     initial: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
     animate: { 
       opacity: 1, 
@@ -136,7 +164,7 @@ export const useStaggeredAnimations = (
         ease: "easeOut" as const
       }
     },
-  };
+  }), [prefersReducedMotion]);
 
   return {
     ref,
@@ -147,35 +175,48 @@ export const useStaggeredAnimations = (
   };
 };
 
-// Parallax scroll hook for subtle background movement
+// Optimized parallax scroll hook with throttling
 export const useParallax = (speed: number = 0.5) => {
   const [offsetY, setOffsetY] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    globalPrefersReducedMotion ?? false
+  );
+
+  const handleScroll = useCallback(() => {
+    if (!prefersReducedMotion) {
+      setOffsetY(window.pageYOffset);
+    }
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
-    // Check for reduced motion preference
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
+    initializeMotionDetection();
+    
+    if (globalPrefersReducedMotion !== null) {
+      setPrefersReducedMotion(globalPrefersReducedMotion);
+    }
+    
+    const listener = (value: boolean) => setPrefersReducedMotion(value);
+    motionListeners.add(listener);
 
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-
-    const handleScroll = () => {
-      if (!prefersReducedMotion) {
-        setOffsetY(window.pageYOffset);
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
 
     return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-      window.removeEventListener('scroll', handleScroll);
+      motionListeners.delete(listener);
+      window.removeEventListener('scroll', throttledHandleScroll);
     };
-  }, [prefersReducedMotion]);
+  }, [handleScroll]);
 
   return prefersReducedMotion ? 0 : offsetY * speed;
 }; 

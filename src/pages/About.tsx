@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import OptimizedImage from "@/components/ui/optimized-image";
 import profileImage from '../assets/addimage.jpeg';
 
 
@@ -112,10 +113,14 @@ const About = () => {
       <div className="w-full h-full rounded-xl bg-card flex items-center justify-center">
         <div className="text-center">
           <div className="w-32 h-32 mx-auto mb-4 bg-gradient-hero rounded-full flex items-center justify-center shadow-elegant overflow-hidden">
-            <img
+            <OptimizedImage
               src={profileImage}
-              alt="Adnan Khattak"
+              alt="Adnan Khattak - React Native Developer"
               className="w-full h-full object-cover rounded-full"
+              width={128}
+              height={128}
+              priority={true}
+              placeholder="blur"
             />
           </div>
           <h3 className="text-xl font-bold text-foreground">Adnan Khattak</h3>
