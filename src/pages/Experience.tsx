@@ -10,14 +10,15 @@ const Experience = () => {
       period: "05/2025 - Present",
       location: "Doha, Qatar",
       type: "Full-time",
-      description: "Building NuviaMind AI wellness app with advanced features including meditation, HealthKit integration, multilingual support, and secure authentication systems.",
+      description: "Building Evolve AI Fitness App with advanced features including meditation, HealthKit integration, multilingual support, and secure authentication systems.",
       achievements: [
-        "Integrated OpenAI and ElevenLabs APIs for personalized wellness experiences",
+        "Integrated OpenAI for personalized Fitness and Calories experiences",
         "Implemented secure authentication and subscription management with Stripe",
         "Developed multilingual support for global user base",
-        "Built comprehensive HealthKit integration for wellness tracking"
+        "Built comprehensive HealthKit integration for wellness tracking",
+        "Integerate Mapbox for User live tracking"
       ],
-      technologies: ["React Native", "TypeScript", "OpenAI API", "ElevenLabs API", "HealthKit", "Firebase", "Stripe"]
+      technologies: ["React Native", "TypeScript", "OpenAI API", "HealthKit", "Firebase", "Supabase", "RevenueCat"]
     },
     {
       company: "TechCreator",

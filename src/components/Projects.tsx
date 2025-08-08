@@ -12,11 +12,11 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Nuviamind",
-      description: "AI wellness app with OpenAI integration, ElevenLabs voice synthesis, HealthKit data integration, and comprehensive meditation features.",
+      title: "Evolve AI Fitness App",
+      description: "AI-powered food and wellness tracker with smart meal logging, nutrition insights, hydration goals, workout tracking, habit building, and Apple Health integration.",
       image: "/placeholder.svg",
-      tech: ["React Native", "OpenAI API", "ElevenLabs", "HealthKit", "TypeScript"],
-      type: "AI Wellness",
+      tech: ["React Native", "OpenAI API", "Apple Health", "TypeScript", "Nutrition DB"],
+      type: "Health & Fitness",
       icon: Zap,
       gradient: "from-primary to-primary-glow"
     },

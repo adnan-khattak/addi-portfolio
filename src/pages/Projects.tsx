@@ -10,20 +10,20 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Nuviamind",
-      description: "AI wellness app with meditation features, HealthKit integration, multilingual support, and secure authentication. Built with OpenAI and ElevenLabs APIs for personalized wellness experiences.",
-      technologies: ["React Native", "TypeScript", "OpenAI API", "ElevenLabs API", "HealthKit", "Firebase", "Stripe"],
-      category: "AI Wellness",
-      status: "Production",
-      company: "SAASTELLAR",
+      title: "Evolve AI Fitness App",
+      description: "AI-powered food and wellness tracker with smart meal logging, nutrition insights, hydration goals, workout tracking, habit building, and Apple Health integration.",
+      technologies: ["React Native", "TypeScript", "OpenAI API","HealthKit", "Supabase", "RevenueCat"],
+      category: "Health & Fitness",
+      status: "Live",
+      company: "Voultrex",
       year: "2025"
     },
     {
-      title: "Services App",
+      title: "OXI Task",
       description: "Social-style service platform featuring ads integration, voice calling capabilities, and social interactions with likes and comments system for service providers and clients.",
       technologies: ["React Native", "Firebase", "Google Ads", "WebRTC", "Redux", "FCM"],
       category: "Social Platform",
-      status: "Completed",
+      status: "Live",
       company: "TechCreator",
       year: "2024-2025"
     },
