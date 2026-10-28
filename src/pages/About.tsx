@@ -1,3 +1,4 @@
+import { profile, engineeringHighlights } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import OptimizedImage from "@/components/ui/optimized-image";
@@ -12,7 +13,7 @@ const About = () => {
       description: "Began as an intern at CodSoft, building and optimizing mobile app features"
     },
     {
-      year: "2023", 
+      year: "2023",
       title: "React Native Developer at Grey Software",
       description: "Created community cleanup app with real-time reporting and task management"
     },
@@ -29,16 +30,13 @@ const About = () => {
     {
       year: "2025",
       title: "Software Engineer at Voultrex",
-      description: "Currently building NuviaMind AI wellness app with HealthKit integration in Doha, Qatar"
+      description: "Built Evolve, an AI fitness and wellness app with HealthKit integration"
+    },
+    {
+      year: "Mobile",
+      title: "Software Engineer at TBox Solutionz",
+      description: "Production app engineering: React Native migrations, native integrations, release automation, and crash debugging"
     }
-  ];
-
-  const funFacts = [
-    "🚀 3 years of React Native development experience",
-    "🤖 Built AI wellness apps with OpenAI and ElevenLabs integration",
-    "🔥 Developed ML-powered fire detection and emergency alert systems",
-    "🌍 Experienced working remotely with international teams",
-    "📱 Specialized in HealthKit integration and real-time mobile features"
   ];
 
   return (
@@ -50,7 +48,7 @@ const About = () => {
             <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">About Me</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A passionate developer and entrepreneur who believes technology should solve real problems and create meaningful impact.
+            {profile.summary}
           </p>
         </div>
 
@@ -63,25 +61,26 @@ const About = () => {
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Hi, I'm Adnan Khattak – a React Native Developer with 3 years of experience building scalable 
-                  cross-platform mobile applications. I have a proven track record in delivering AI-integrated 
-                  wellness apps, real-time features, health data integrations, and secure subscription-based models.
+                  Hi, I'm Adnan Khattak, a software engineer focused on production mobile apps.
+                  My work includes DealRevs, Carantee, Spendlio, Real Horse, and Evolve,
+                  spanning automotive, personal finance, equestrian, and fitness products.
                 </p>
                 <p>
-                  I'm experienced in working remotely with international teams and managing full app cycles from 
-                  concept to deployment. My expertise spans from AI wellness applications with OpenAI integration 
-                  to fire safety apps with ML-based real-time detection, always focusing on user experience and 
-                  technical excellence.
+                  At TBox Solutionz, my engineering work includes React Native 0.64→0.81 migration,
+                  CI/CD with GitHub Actions, Xcode CLI, and Firebase App Distribution, and crash
+                  investigation with Crashlytics and Sentry. I also work with Siri Shortcuts,
+                  OCR/text recognition, Google Maps, and AI-assisted tooling such as Claude Code,
+                  Cursor, and MCP.
                 </p>
                 <p>
-                  I graduated with a Bachelor's degree in Software Engineering from UET Mardan (2020-2024) and 
-                  am currently based in Islamabad, Pakistan, working with teams across different time zones to 
+                  I graduated with a Bachelor's degree in Software Engineering from UET Mardan (2020-2024) and
+                  am currently based in Islamabad, Pakistan, working with teams across different time zones to
                   deliver innovative mobile solutions.
                 </p>
                 <div className="pt-4">
                   <Button variant="honey" asChild>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                      Download My Resume
+                    <a href="/contact?subject=Resume%20request">
+                      Request My Resume
                     </a>
                   </Button>
                 </div>
@@ -142,18 +141,18 @@ const About = () => {
             <div className="relative">
               {/* Timeline Line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-honey" />
-              
+
               {milestones.map((milestone, index) => (
-                <div 
-                  key={milestone.year}
+                <div
+                  key={milestone.title}
                   className="relative flex items-start mb-8"
                   style={{ animationDelay: `${0.6 + index * 0.1}s` }}
                 >
                   {/* Timeline Dot */}
-                  <div className="relative z-10 w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center shadow-glow">
+                  <div className="relative z-10 w-16 h-16 shrink-0 bg-gradient-hero rounded-full flex items-center justify-center shadow-glow">
                     <span className="text-sm font-bold text-primary-foreground">{milestone.year}</span>
                   </div>
-                  
+
                   {/* Content */}
                   <Card className="ml-6 flex-1 bg-card/50 border-border/50 hover:shadow-elegant transition-all duration-300">
                     <CardHeader>
@@ -172,17 +171,18 @@ const About = () => {
         {/* Fun Facts */}
         <div className="animate-slide-up" style={{ animationDelay: '0.8s' }}>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Fun Facts</span>
+            <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Engineering Highlights</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {funFacts.map((fact, index) => (
-              <Card 
+            {engineeringHighlights.map((highlight, index) => (
+              <Card
                 key={index}
                 className="text-center p-6 bg-card/50 border-border/50 hover:shadow-elegant hover:scale-105 transition-all duration-300"
                 style={{ animationDelay: `${1 + index * 0.1}s` }}
               >
                 <CardContent className="pt-0">
-                  <p className="text-muted-foreground">{fact}</p>
+                  <h3 className="font-semibold text-primary mb-3">{highlight.title}</h3>
+                  <p className="text-muted-foreground">{highlight.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -193,8 +193,8 @@ const About = () => {
         <div className="text-center mb-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="honey" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                Download Resume
+              <a href="/contact?subject=Resume%20request">
+                Request Resume
               </a>
             </Button>
             <Button variant="outline" asChild>

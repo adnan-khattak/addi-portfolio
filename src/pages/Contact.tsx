@@ -1,3 +1,6 @@
+import { profile } from "@/data/portfolio";
+import { createContactMailto } from "@/lib/contact";
+import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,17 +9,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    subject: searchParams.get("subject") || "",
     message: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission here
+    window.location.href = createContactMailto(formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,7 +34,7 @@ const Contact = () => {
       title: "WhatsApp",
       description: "Quick response for urgent inquiries",
       action: "Message on WhatsApp",
-      href: "https://wa.me/+923430229384",
+      href: "https://wa.me/923430229384",
       icon: "💬",
       color: "bg-green-500"
     },
@@ -39,7 +42,7 @@ const Contact = () => {
       title: "Email",
       description: "Detailed project discussions",
       action: "adnanktk540@gmail.com",
-      href: "mailto:adnanktk540@gmail.com",
+      href: `mailto:${profile.email}`,
       icon: "📧",
       color: "bg-blue-500"
     },
@@ -47,16 +50,16 @@ const Contact = () => {
       title: "LinkedIn",
       description: "Professional networking",
       action: "Connect on LinkedIn",
-      href: "https://www.linkedin.com/in/addi54/",
+      href: profile.linkedin,
       icon: "💼",
       color: "bg-blue-600"
     },
     {
-      title: "Schedule Call",
-      description: "Book a consultation call",
-      action: "Schedule Meeting",
-      href: "https://calendly.com/adnan-khattak",
-      icon: "📅",
+      title: "GitHub",
+      description: "Code and development projects",
+      action: "View GitHub Profile",
+      href: profile.github,
+      icon: "⌘",
       color: "bg-purple-500"
     }
   ];
@@ -70,7 +73,7 @@ const Contact = () => {
             <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Get In Touch</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Let's discuss your project and explore how we can work together.
+            Let's talk about mobile engineering roles, production app development, React Native migrations, native features, or CI/CD and release workflows.
           </p>
         </div>
 
@@ -79,10 +82,11 @@ const Contact = () => {
           <div className="animate-slide-up">
             <Card className="bg-gradient-card border-border/50 shadow-elegant">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-primary">Send a Message</CardTitle>
+                <CardTitle className="text-2xl font-bold text-primary">Start a Conversation</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <p className="text-sm text-muted-foreground">Opens your email app with a draft to review and send. You can also email <a className="text-primary underline" href={`mailto:${profile.email}`}>{profile.email}</a> directly.</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name</Label>
@@ -110,7 +114,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
                     <Input
@@ -123,7 +127,7 @@ const Contact = () => {
                       className="bg-background/50"
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea
@@ -137,9 +141,9 @@ const Contact = () => {
                       className="bg-background/50 resize-none"
                     />
                   </div>
-                  
+
                   <Button type="submit" variant="hero" size="lg" className="w-full">
-                    Send Message
+                    Prepare Email
                   </Button>
                 </form>
               </CardContent>
@@ -152,7 +156,7 @@ const Contact = () => {
               <h2 className="text-2xl font-bold text-primary mb-6">Other Ways to Connect</h2>
               <div className="space-y-4">
                 {contactMethods.map((method, index) => (
-                  <Card 
+                  <Card
                     key={method.title}
                     className="group hover:shadow-elegant hover:scale-105 transition-all duration-300 border-border/50 bg-card/50"
                     style={{ animationDelay: `${0.4 + index * 0.1}s` }}
@@ -205,16 +209,16 @@ const Contact = () => {
                 <h3 className="font-bold text-lg mb-4">Let's Build Something Great</h3>
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold">50+</div>
-                    <div className="text-xs opacity-80">Projects</div>
+                    <div className="text-2xl font-bold">5</div>
+                    <div className="text-xs opacity-80">Featured Apps</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">100K+</div>
-                    <div className="text-xs opacity-80">Users</div>
+                    <div className="text-2xl font-bold">iOS</div>
+                    <div className="text-xs opacity-80">Native Features</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">5⭐</div>
-                    <div className="text-xs opacity-80">Rating</div>
+                    <div className="text-2xl font-bold">CI/CD</div>
+                    <div className="text-xs opacity-80">Releases</div>
                   </div>
                 </div>
               </CardContent>

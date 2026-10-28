@@ -1,3 +1,4 @@
+import { portfolioStats } from "@/data/portfolio";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -8,17 +9,17 @@ import { useParallax } from "@/hooks/use-scroll-animations";
 const Hero = () => {
   const [currentTitle, setCurrentTitle] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  
+
   const { scrollY } = useScroll();
   const parallaxY = useParallax(0.3);
   const backgroundY = useTransform(scrollY, [0, 500], [0, 150]);
-  
+
   const titles = [
     "React Native Developer",
-    "Mobile App Developer", 
-    "Cross-Platform Expert",
+    "Mobile App Developer",
+    "Production App Engineer",
     "TypeScript Developer",
-    "AI Integration Specialist",
+    "Mobile Release Engineer",
   ];
 
   useEffect(() => {
@@ -56,11 +57,11 @@ const Hero = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
-        duration: prefersReducedMotion ? 0.1 : 0.8, 
+      transition: {
+        duration: prefersReducedMotion ? 0.1 : 0.8,
         ease: "easeOut" as const
       }
     }
@@ -81,7 +82,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden mt-20">
       {/* Enhanced Background with Parallax */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5"
         style={{ y: prefersReducedMotion ? 0 : backgroundY }}
       >
@@ -140,7 +141,7 @@ const Hero = () => {
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Text Content */}
-            <motion.div 
+            <motion.div
               className="text-center lg:text-left"
               variants={containerVariants}
               initial="hidden"
@@ -148,33 +149,33 @@ const Hero = () => {
             >
               {/* Dynamic Title with Enhanced Typography */}
               <motion.div className="mb-8" variants={itemVariants}>
-                <motion.h1 
-                  className="text-6xl md:text-8xl font-bold mb-6 leading-tight"
+                <motion.h1
+                  className="text-5xl sm:text-6xl md:text-8xl font-bold mb-6 leading-tight"
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <motion.span 
+                  <motion.span
                     className="text-primary"
-                    whileHover={{ 
-                      textShadow: prefersReducedMotion ? "none" : "0 0 20px hsl(var(--primary-glow))" 
+                    whileHover={{
+                      textShadow: prefersReducedMotion ? "none" : "0 0 20px hsl(var(--primary-glow))"
                     }}
                   >
                     Adnan
                   </motion.span>
                   <br />
-                  <motion.span 
+                  <motion.span
                     className="text-foreground"
-                    whileHover={{ 
-                      color: prefersReducedMotion ? undefined : "hsl(var(--accent))" 
+                    whileHover={{
+                      color: prefersReducedMotion ? undefined : "hsl(var(--accent))"
                     }}
                   >
                     Khattak
                   </motion.span>
                 </motion.h1>
-                
+
                 <div className="h-20 flex items-center justify-center lg:justify-start">
-                  <motion.h2 
-                    className="text-3xl md:text-4xl font-bold text-muted-foreground transition-all duration-500 flex items-center gap-3"
+                  <motion.h2
+                    className="text-2xl md:text-4xl font-bold text-muted-foreground transition-all duration-500 flex items-center gap-3"
                     key={currentTitle}
                     initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -197,26 +198,26 @@ const Hero = () => {
                 className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed"
                 variants={itemVariants}
               >
-                Building scalable cross-platform mobile applications with
-                <motion.span 
+                Building and maintaining production mobile apps with
+                <motion.span
                   className="text-primary font-semibold"
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
                 >
                   {" "}React Native
                 </motion.span>
-                ,<motion.span 
+                ,<motion.span
                   className="text-accent font-semibold"
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
-                > AI integration</motion.span>,
+                > native integrations</motion.span>,
                 and
-                <motion.span 
+                <motion.span
                   className="text-honey font-semibold"
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
                 >
-                  {" "}real-time features
+                  {" "}reliable releases
                 </motion.span>
-                . 3 years of experience delivering innovative wellness apps and 
-                secure subscription-based models.
+                . From DealRevs and Carantee to Spendlio, Real Horse, and Evolve —
+                I work across features, framework migrations, CI/CD, and production debugging.
               </motion.p>
 
               {/* Enhanced CTA Buttons */}
@@ -241,20 +242,20 @@ const Hero = () => {
                     </Link>
                   </Button>
                 </motion.div>
-                
+
                 <motion.div
                   whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
                   whileTap={{ scale: prefersReducedMotion ? 1 : 0.95 }}
                 >
                   <Button variant="accent" size="xl" className="group" asChild>
-                    <Link to="/about">
+                    <Link to="/projects">
                       <motion.div
                         className="flex items-center"
                         whileHover={{ x: prefersReducedMotion ? 0 : 5 }}
                         transition={{ type: "spring", stiffness: 400 }}
                       >
                         <Smartphone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                        About Me
+                        View Production Work
                       </motion.div>
                     </Link>
                   </Button>
@@ -263,18 +264,14 @@ const Hero = () => {
 
               {/* Stats Section with Hover Effects */}
               <motion.div
-                className="grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0"
+                className="grid grid-cols-2 gap-6 max-w-lg mx-auto lg:mx-0"
                 variants={itemVariants}
               >
-                {[
-                  { value: "3+", label: "Years Experience", color: "text-primary" },
-                  { value: "10+", label: "Projects Completed", color: "text-accent" },
-                  { value: "100%", label: "Client Satisfaction", color: "text-honey" },
-                ].map((stat, index) => (
-                  <motion.div 
+                {portfolioStats.map((stat, index) => (
+                  <motion.div
                     key={stat.label}
                     className="text-center lg:text-left cursor-pointer"
-                    whileHover={{ 
+                    whileHover={{
                       scale: prefersReducedMotion ? 1 : 1.05,
                       y: prefersReducedMotion ? 0 : -5
                     }}
@@ -291,9 +288,9 @@ const Hero = () => {
                 className="flex justify-center lg:justify-start mt-8"
                 variants={itemVariants}
               >
-                <motion.div 
+                <motion.div
                   className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium cursor-pointer"
-                  whileHover={{ 
+                  whileHover={{
                     scale: prefersReducedMotion ? 1 : 1.05,
                     backgroundColor: "hsl(var(--primary) / 0.15)"
                   }}
@@ -320,7 +317,7 @@ const Hero = () => {
                   >
                     <Star className="w-4 h-4" />
                   </motion.div>
-                  Available for Hire
+                  Open to Mobile Engineering Opportunities
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -341,7 +338,7 @@ const Hero = () => {
                   className={`absolute ${item.position} ${item.size} ${item.gradient} rounded-2xl flex items-center justify-center shadow-glow z-10 cursor-pointer`}
                   variants={floatingVariants}
                   animate="float"
-                  whileHover={{ 
+                  whileHover={{
                     scale: prefersReducedMotion ? 1 : 1.1,
                     rotate: prefersReducedMotion ? 0 : 10
                   }}
@@ -352,9 +349,9 @@ const Hero = () => {
               ))}
 
               {/* Main Profile Image Container with Enhanced Effects */}
-              <motion.div 
+              <motion.div
                 className="w-80 h-80 bg-gradient-to-br from-card via-card to-primary/5 rounded-3xl border border-border/50 shadow-elegant backdrop-blur-sm flex items-center justify-center relative overflow-hidden cursor-pointer"
-                whileHover={{ 
+                whileHover={{
                   scale: prefersReducedMotion ? 1 : 1.02,
                   rotateY: prefersReducedMotion ? 0 : 5,
                   rotateX: prefersReducedMotion ? 0 : 5
@@ -362,7 +359,7 @@ const Hero = () => {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 {/* Inner glow effect */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-4 bg-gradient-hero rounded-2xl opacity-10"
                   animate={prefersReducedMotion ? {} : {
                     opacity: [0.1, 0.2, 0.1],
@@ -377,13 +374,13 @@ const Hero = () => {
 
                 {/* Profile Content */}
                 <div className="relative z-10 text-center">
-                  <motion.div 
+                  <motion.div
                     className="w-24 h-24 mx-auto rounded-full bg-gradient-hero p-1 shadow-glow mb-6"
-                    whileHover={{ 
+                    whileHover={{
                       scale: prefersReducedMotion ? 1 : 1.1,
                       rotate: prefersReducedMotion ? 0 : 360
                     }}
-                    transition={{ 
+                    transition={{
                       rotate: { duration: 0.5 },
                       scale: { type: "spring", stiffness: 300 }
                     }}
@@ -392,12 +389,12 @@ const Hero = () => {
                       <span className="text-3xl font-bold text-primary">AK</span>
                     </div>
                   </motion.div>
-                  
+
                   <motion.div
                     whileHover={{ scale: prefersReducedMotion ? 1 : 1.05 }}
                   >
                     <h3 className="text-2xl font-bold text-foreground mb-2">Adnan Khattak</h3>
-                    <p className="text-muted-foreground">React Native Expert</p>
+                    <p className="text-muted-foreground">Mobile Software Engineer</p>
                   </motion.div>
                 </div>
               </motion.div>
@@ -410,16 +407,16 @@ const Hero = () => {
             style={{ animationDelay: "1s" }}
           >
             <p className="text-muted-foreground mb-6 text-lg">
-              Trusted by startups and enterprises
+              Production mobile engineering, from code to release
             </p>
             <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
               {[
                 "React Native",
                 "TypeScript",
-                "JavaScript",
-                "React.js",
+                "GitHub Actions",
+                "Xcode CLI",
                 "Firebase",
-                "Supabase",
+                "Crashlytics & Sentry",
               ].map((tech, index) => (
                 <div
                   key={tech}

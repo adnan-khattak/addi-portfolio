@@ -1,3 +1,5 @@
+import { portfolioStats, profile } from "@/data/portfolio";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Code2, Coffee, Heart, Target, GraduationCap } from "lucide-react";
@@ -20,14 +22,14 @@ const About = () => {
     },
     {
       icon: Target,
-      title: "Goal-Oriented", 
+      title: "Goal-Oriented",
       description: "Focused on delivering results that exceed expectations",
       color: "from-accent to-accent-glow"
     },
     {
       icon: Heart,
       title: "Passionate",
-      description: "Genuinely love crafting digital experiences that matter",
+      description: "Care about reliable apps and useful mobile experiences",
       color: "from-red-500 to-pink-500"
     },
     {
@@ -45,11 +47,11 @@ const About = () => {
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <motion.div 
+          <motion.div
             ref={headerRef}
             className="text-center mb-16"
             initial={headerVariants.slideUp.initial}
@@ -60,64 +62,64 @@ const About = () => {
               About <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Me</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-balance">
-              React Native Developer with 3 years of experience building scalable 
-              cross-platform mobile applications. Proven track record in delivering 
-              AI-integrated wellness apps, real-time features, and secure subscription-based models.
+              {profile.summary}
             </p>
           </motion.div>
 
           {/* Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Left - Main Content */}
-            <motion.div 
+            <motion.div
               ref={contentRef}
               initial={contentVariants.slideLeft.initial}
               animate={contentVariants.slideLeft.animate}
               transition={contentVariants.slideLeft.transition}
             >
               <div className="space-y-6">
-                <motion.p 
+                <motion.p
                   className="text-lg text-muted-foreground leading-relaxed"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  With{" "}
-                  <motion.span 
+                  I bring{" "}
+                  <motion.span
                     className="text-primary font-semibold"
                     whileHover={{ color: "hsl(var(--primary-glow))" }}
                   >
-                    3 years of experience
+                    3+ years of mobile experience
                   </motion.span>{" "}
-                  in React Native development, I specialize in building cross-platform 
-                  mobile applications that deliver exceptional user experiences across 
-                  iOS and Android platforms.
+                  to production apps including DealRevs, Carantee, Spendlio, Real Horse,
+                  and Evolve. My work at TBox Solutionz includes maintaining existing apps
+                  as well as delivering new features.
                 </motion.p>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-lg text-muted-foreground leading-relaxed"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  My expertise includes{" "}
-                  <motion.span 
+                  My engineering work includes{" "}
+                  <motion.span
                     className="text-accent font-semibold"
                     whileHover={{ color: "hsl(var(--accent-glow))" }}
                   >
-                    AI integration
+                    React Native 0.64→0.81 migration
                   </motion.span>{" "}
-                  with OpenAI and ElevenLabs APIs, HealthKit integration for wellness apps, 
-                  real-time features, and secure payment implementations with Stripe.
+                  and CI/CD with GitHub Actions, Xcode CLI, and Firebase App Distribution.
+                  I debug production crashes with Crashlytics and Sentry, and build native
+                  features with Siri Shortcuts, OCR/text recognition, and Google Maps.
                 </motion.p>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-lg text-muted-foreground leading-relaxed"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  I have experience working remotely with international teams and 
-                  managing full app development cycles from concept to deployment. 
+                  I have experience working remotely with international teams and
+                  managing full app development cycles from concept to deployment. I also use
+                  Claude Code, Cursor, and MCP tooling with code review and validation.
                   Graduated with a{" "}
-                  <motion.span 
+                  <motion.span
                     className="text-honey font-semibold"
                     whileHover={{ color: "hsl(var(--honey-dark))" }}
                   >
@@ -127,7 +129,7 @@ const About = () => {
                 </motion.p>
               </div>
 
-              <motion.div 
+              <motion.div
                 className="mt-8 flex flex-wrap gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -137,8 +139,8 @@ const About = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button variant="hero" size="lg" className="interactive-lift">
-                    Download Resume
+                  <Button variant="hero" size="lg" className="interactive-lift" asChild>
+                    <Link to="/contact?subject=Resume%20request">Request Resume</Link>
                   </Button>
                 </motion.div>
                 <motion.div
@@ -166,7 +168,7 @@ const About = () => {
                 <motion.div
                   key={value.title}
                   variants={childVariants}
-                  whileHover={{ 
+                  whileHover={{
                     y: -8,
                     scale: 1.02,
                     transition: { type: "spring", stiffness: 300 }
@@ -175,14 +177,14 @@ const About = () => {
                 >
                   <Card className="p-6 bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 hover:shadow-elegant group cursor-pointer h-full">
                     <div className="text-center">
-                      <motion.div 
+                      <motion.div
                         className={`w-12 h-12 mx-auto mb-4 bg-gradient-to-br ${value.color} rounded-xl flex items-center justify-center shadow-glow`}
-                        whileHover={{ 
+                        whileHover={{
                           scale: 1.2,
                           rotate: 360
                         }}
-                        transition={{ 
-                          type: "spring", 
+                        transition={{
+                          type: "spring",
                           stiffness: 300,
                           rotate: { duration: 0.6 }
                         }}
@@ -203,7 +205,7 @@ const About = () => {
           </div>
 
           {/* Education Section */}
-          <motion.div 
+          <motion.div
             ref={educationRef}
             className="mb-16"
             initial={educationVariants.fadeIn.initial}
@@ -212,7 +214,7 @@ const About = () => {
           >
             <h3 className="text-2xl font-bold text-foreground mb-6 text-center">Education</h3>
             <motion.div
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 y: -4
               }}
@@ -220,13 +222,13 @@ const About = () => {
             >
               <Card className="p-8 bg-card/50 border-border/50 backdrop-blur-sm hover:shadow-elegant transition-all duration-300 max-w-2xl mx-auto cursor-pointer">
                 <div className="flex items-center gap-4 mb-4">
-                  <motion.div 
+                  <motion.div
                     className="w-12 h-12 bg-gradient-hero rounded-xl flex items-center justify-center shadow-glow"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       rotate: [0, -10, 10, 0]
                     }}
-                    transition={{ 
+                    transition={{
                       scale: { type: "spring", stiffness: 300 },
                       rotate: { duration: 0.5 }
                     }}
@@ -240,7 +242,7 @@ const About = () => {
                 </div>
                 <div className="flex justify-between items-center text-muted-foreground">
                   <span>2020 - 2024</span>
-                  <motion.span 
+                  <motion.span
                     className="font-semibold text-primary"
                     whileHover={{ scale: 1.1 }}
                   >
@@ -259,25 +261,20 @@ const About = () => {
             initial="initial"
             animate="animate"
           >
-            {[
-              { value: "3+", label: "Years Experience", color: "text-primary" },
-              { value: "10+", label: "Projects", color: "text-accent" },
-              { value: "8+", label: "Technologies", color: "text-honey" },
-              { value: "100%", label: "Satisfaction", color: "text-primary-glow" }
-            ].map((stat, index) => (
-              <motion.div 
+            {portfolioStats.map((stat, index) => (
+              <motion.div
                 key={stat.label}
                 className="text-center"
                 variants={statsChild}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.1,
                   y: -5
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className={`text-3xl md:text-4xl font-bold ${stat.color} mb-2`}
-                  whileHover={{ 
+                  whileHover={{
                     textShadow: "0 0 20px currentColor"
                   }}
                 >
