@@ -1,0 +1,26 @@
+{
+  "/": {
+    "title": "Adnan Khattak | React Native & Mobile Software Engineer",
+    "description": "Adnan Khattak builds production mobile apps: DealRevs, Carantee, Spendlio, Real Horse, and Evolve. React Native, native integrations, CI/CD, and crash debugging."
+  },
+  "/about": {
+    "title": "About Adnan Khattak | Mobile Software Engineer",
+    "description": "Meet Adnan Khattak, a mobile software engineer with experience at TBox Solutionz, production React Native apps, native integrations, and reliable releases."
+  },
+  "/experience": {
+    "title": "Experience | Adnan Khattak",
+    "description": "Mobile engineering at TBox Solutionz and international teams: React Native 0.64 to 0.81 migration, GitHub Actions, Xcode CLI, Crashlytics, and Sentry."
+  },
+  "/projects": {
+    "title": "Production Apps & Projects | Adnan Khattak",
+    "description": "Explore Adnan Khattak's production mobile app work on DealRevs, Carantee, Spendlio, Real Horse, and Evolve, plus earlier React Native projects."
+  },
+  "/skills": {
+    "title": "Mobile Engineering Skills | Adnan Khattak",
+    "description": "React Native, TypeScript, Siri Shortcuts, OCR/text recognition, Google Maps, CI/CD, Firebase App Distribution, Crashlytics, Sentry, Claude Code, Cursor, and MCP."
+  },
+  "/contact": {
+    "title": "Contact Adnan Khattak | Mobile Engineering",
+    "description": "Contact Adnan Khattak about mobile engineering roles, production apps, React Native migrations, native features, or release automation. Connect on GitHub and LinkedIn."
+  }
+}

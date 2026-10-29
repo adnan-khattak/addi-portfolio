@@ -1,37 +1,33 @@
+import { profile } from "@/data/portfolio";
+import { createContactMailto } from "@/lib/contact";
+import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  Github, 
-  Linkedin, 
-  Twitter,
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
   MessageCircle
 } from "lucide-react";
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    subject: searchParams.get("subject") || "",
     message: ""
   });
-  const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    window.location.href = createContactMailto(formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,7 +39,7 @@ const Contact = () => {
       icon: Mail,
       title: "Email",
       value: "adnanktk540@gmail.com",
-      link: "mailto:adnanktk540@gmail.com"
+      link: `mailto:${profile.email}`
     },
     {
       icon: MapPin,
@@ -60,8 +56,8 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com/adnanktk" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/adnan-khattak/" }
+    { icon: Github, label: "GitHub", href: profile.github },
+    { icon: Linkedin, label: "LinkedIn", href: profile.linkedin }
   ];
 
   return (
@@ -74,8 +70,8 @@ const Contact = () => {
               Let's <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">Connect</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Ready to bring your ideas to life? I'm always excited to discuss new opportunities 
-              and innovative projects. Let's create something amazing together.
+              Looking for help with a production mobile app, a React Native upgrade,
+              native integrations, or release automation? Let's discuss your project or team.
             </p>
           </div>
 
@@ -86,16 +82,18 @@ const Contact = () => {
                 <div className="w-12 h-12 bg-gradient-hero rounded-xl flex items-center justify-center shadow-glow">
                   <MessageCircle className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground">Send a Message</h3>
+                <h3 className="text-2xl font-bold text-foreground">Start a Conversation</h3>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                  <p className="text-sm text-muted-foreground">Opens your email app with a draft to review and send. You can also email <a className="text-primary underline" href={`mailto:${profile.email}`}>{profile.email}</a> directly.</p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="home-contact-name" className="block text-sm font-medium text-foreground mb-2">
                       Your Name
                     </label>
                     <Input
+                      id="home-contact-name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -105,11 +103,12 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="home-contact-email" className="block text-sm font-medium text-foreground mb-2">
                       Email Address
                     </label>
                     <Input
                       type="email"
+                      id="home-contact-email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -121,11 +120,12 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="home-contact-subject" className="block text-sm font-medium text-foreground mb-2">
                     Subject
                   </label>
                   <Input
-                    name="subject"
+                    id="home-contact-subject"
+                      name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Project Discussion"
@@ -135,11 +135,12 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="home-contact-message" className="block text-sm font-medium text-foreground mb-2">
                     Message
                   </label>
                   <Textarea
-                    name="message"
+                    id="home-contact-message"
+                      name="message"
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
@@ -151,7 +152,7 @@ const Contact = () => {
 
                 <Button type="submit" className="w-full" variant="hero" size="lg">
                   <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  Prepare Email
                 </Button>
               </form>
             </Card>
@@ -170,8 +171,8 @@ const Contact = () => {
                       <div>
                         <p className="font-medium text-foreground">{info.title}</p>
                         {info.link ? (
-                          <a 
-                            href={info.link} 
+                          <a
+                            href={info.link}
                             className="text-muted-foreground hover:text-primary transition-colors"
                           >
                             {info.value}
@@ -193,6 +194,9 @@ const Contact = () => {
                     <a
                       key={social.label}
                       href={social.href}
+                      aria-label={social.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-12 h-12 bg-card/50 border border-border/50 rounded-xl flex items-center justify-center hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 group"
                     >
                       <social.icon className="w-5 h-5" />
@@ -205,11 +209,11 @@ const Contact = () => {
               <Card className="p-6 bg-gradient-hero/10 border-primary/20">
                 <h4 className="font-bold text-foreground mb-2">Ready to Start?</h4>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  Whether you have a specific project in mind or just want to explore possibilities, 
+                  Whether you have a specific project in mind or just want to explore possibilities,
                   I'm here to help turn your vision into reality.
                 </p>
-                <Button variant="hero" className="w-full">
-                  Schedule a Call
+                <Button variant="hero" className="w-full" asChild>
+                  <a href={`mailto:${profile.email}?subject=Mobile%20engineering%20discussion`}>Discuss Availability</a>
                 </Button>
               </Card>
             </div>

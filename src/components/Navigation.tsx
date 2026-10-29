@@ -27,6 +27,11 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const isActive = (path: string) => {
     if (path === "/") return location.pathname === "/";
     if (path.includes("#")) {
@@ -113,6 +118,9 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
             className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -141,7 +149,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-elegant">
+          <div id="mobile-navigation" className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-elegant">
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
                 item.isSection ? (

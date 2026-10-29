@@ -1,3 +1,5 @@
+import { projects } from "@/data/portfolio";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,55 +8,8 @@ import { useScrollAnimations } from "@/hooks/use-scroll-animations";
 
 const Projects = () => {
   const { ref: headerRef, isInView: headerVisible } = useScrollAnimations();
-  const { ref: projectsRef, isInView: projectsVisible } = useScrollAnimations();
+  const { ref: projectsRef, isInView: projectsVisible } = useScrollAnimations({ threshold: 0.01 });
 
-  const projects = [
-    {
-      title: "Evolve AI Fitness App",
-      description: "AI-powered food and wellness tracker with smart meal logging, nutrition insights, hydration goals, workout tracking, habit building, and Apple Health integration.",
-      technologies: ["React Native", "TypeScript", "OpenAI API","HealthKit", "Supabase", "RevenueCat"],
-      category: "Health & Fitness",
-      status: "Live",
-      company: "Voultrex",
-      year: "2025"
-    },
-    {
-      title: "OXI Task",
-      description: "Social-style service platform featuring ads integration, voice calling capabilities, and social interactions with likes and comments system for service providers and clients.",
-      technologies: ["React Native", "Firebase", "Google Ads", "WebRTC", "Redux", "FCM"],
-      category: "Social Platform",
-      status: "Live",
-      company: "TechCreator",
-      year: "2024-2025"
-    },
-    {
-      title: "Rideshare App",
-      description: "Real-time ride booking application with Google Maps integration, live tracking, payment processing, and efficient ride matching algorithms.",
-      technologies: ["React Native", "Google Maps API", "Firebase", "Stripe", "Redux", "WebSocket"],
-      category: "Transportation",
-      status: "Completed",
-      company: "Personal Project",
-      year: "2024"
-    },
-    {
-      title: "Fire Safety App",
-      description: "ML-powered fire detection system with real-time alerts, emergency notifications, and comprehensive safety management for residential and commercial properties.",
-      technologies: ["React Native", "Machine Learning", "FCM", "Firebase", "Camera API", "Push Notifications"],
-      category: "Safety & Security",
-      status: "Completed",
-      company: "Eonlight Solution",
-      year: "2024"
-    },
-    {
-      title: "Community Cleanup App",
-      description: "Real-time citizen reporting platform with task management system featuring two-panel interface for efficient community cleanup coordination and monitoring.",
-      technologies: ["React Native", "Firebase", "Google Maps", "Redux", "Real-time Database", "Image Processing"],
-      category: "Community",
-      status: "Completed",
-      company: "Grey Software",
-      year: "2023-2024"
-    }
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,7 +36,7 @@ const Projects = () => {
     <div className="min-h-screen pt-20 pb-16">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div 
+        <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 20 }}
           animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -92,8 +47,8 @@ const Projects = () => {
             <span className="bg-gradient-hero bg-clip-text text-white px-2 py-1 rounded-md">My Projects</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A showcase of mobile applications I've built, from AI-powered wellness apps to real-time safety systems, 
-            demonstrating expertise in React Native and modern mobile development.
+            Production work on DealRevs, Carantee, Spendlio, Real Horse, and Evolve,
+            alongside earlier projects in services, transport, safety, and community coordination.
           </p>
         </motion.div>
 
@@ -116,7 +71,7 @@ const Projects = () => {
                       </CardTitle>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                         <span className="text-accent font-medium">{project.company}</span>
-                        <span>•</span>
+                        {project.company && project.year && <span>•</span>}
                         <span>{project.year}</span>
                       </div>
                       <Badge variant="secondary" className="mb-3">
@@ -124,7 +79,7 @@ const Projects = () => {
                       </Badge>
                     </div>
                     <div className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      project.status === 'Production' 
+                      project.status === 'Production'
                         ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
                         : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
                     }`}>
@@ -136,15 +91,15 @@ const Projects = () => {
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {project.description}
                   </p>
-                  
+
                   {/* Technologies */}
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold text-foreground mb-3">Technologies Used</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          variant="outline" 
+                        <Badge
+                          key={tech}
+                          variant="outline"
                           className="text-xs hover:bg-primary/10 hover:border-primary/50 transition-colors"
                         >
                           {tech}
@@ -153,14 +108,14 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
                   <div className="flex gap-3">
-                    <Button variant="outline" size="sm" className="flex-1">
-                      View Details
-                    </Button>
-                    {project.title === "Nuviamind" && (
-                      <Button variant="honey" size="sm" className="flex-1">
-                        Live App
+                    {project.url ? (
+                      <Button variant="honey" size="sm" asChild>
+                        <a href={project.url} target="_blank" rel="noopener noreferrer">View {project.title}</a>
+                      </Button>
+                    ) : (
+                      <Button variant="outline" size="sm" asChild>
+                        <Link to={`/contact?subject=${encodeURIComponent(project.title)}`}>Discuss {project.title}</Link>
                       </Button>
                     )}
                   </div>
@@ -171,7 +126,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Call to Action */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={projectsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
